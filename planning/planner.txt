@@ -40,3 +40,9 @@ Main Pages
     Button to list quiz immediately or only to profile page
   Log in page
   Registration
+
+Strech
+  Delete Quiz
+  Edit Quiz
+  Reattempt Quiz
+  Show actual quiz results with incorrect and correct answers. Not just the number.
