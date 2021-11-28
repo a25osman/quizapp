@@ -1,17 +1,35 @@
-body {
+nav {
+  color: #ffff;
+  background-color: #e1793e;
+  height: 120px;
+  width: 100%;
+  top: 0;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-top: 1.5em;
+  z-index: 1;
+  position: fixed;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  justify-content: space-between;
+}
 
+body {
+  padding-top: 8em;
   background: rgb(163, 208, 219);
-  background: linear-gradient(
-    227deg,
-    rgba(163, 208, 219, 1) 0%,
-    rgba(163, 176, 219, 1) 20%,
-    rgba(163, 173, 219, 1) 34%,
-    rgba(163, 219, 208, 1) 59%,
-    rgba(163, 208, 219, 1) 74%,
-    rgba(163, 208, 219, 1) 100%
-  );
+}
+
+.loginorregister {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+h1 {
+  text-align: center;
+}
+
+.quiz-container {
+  border: solid 2px green;
+  margin: 2em;
+  color: green;
 }
