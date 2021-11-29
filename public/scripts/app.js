@@ -1,10 +1,8 @@
 // Client facing scripts here
 $(document).ready(function () {
-  $(".addquestion").prepend(`<section class="newquiz">
-        <form action="">
-          <label for="QuizTitle">Quiz Title:</label>
-          <input type="text" />
-          <br />
+  $(".addquestion").on("click", function () {
+    $(".quiz-container").append(`<section class="newquiz">
+        <form action="/index" method="POST">
           <label for="question">Question</label>
           <input type="text" />
           <br />
@@ -22,4 +20,5 @@ $(document).ready(function () {
           <br />
         </form>
       </section>`);
+  });
 });

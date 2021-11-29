@@ -4,9 +4,20 @@ section {
   justify-items: center;
   justify-content: center;
   margin: 2em;
+  padding-top: 5px;
 }
-section :hover {
-  border: 1px solid;
-  padding: 10px;
-  box-shadow: 5px 10px #888888;
+// section :hover {
+//   border: 1px solid;
+//   padding: 10px;
+//   box-shadow: 5px 10px #888888;
+// }
+
+input[type="text"],
+select {
+  padding: 10px 15px;
+  margin: 4px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }

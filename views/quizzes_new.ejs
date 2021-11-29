@@ -35,12 +35,12 @@
 
   <body>
     <h1>Create Quiz</h1>
-    <main>
+    <label for="QuizTitle">Quiz Title:</label>
+    <input type="text" />
+    <br />
+    <main class="quiz-container">
       <section class="newquiz">
-        <form action="">
-          <label for="QuizTitle">Quiz Title:</label>
-          <input type="text" />
-          <br />
+        <form action="/index" method="POST">
           <label for="question">Question</label>
           <input type="text" />
           <br />
