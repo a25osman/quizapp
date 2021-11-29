@@ -15,15 +15,15 @@
       crossorigin="anonymous"
     />
 
-    <title>Quiz App - Register</title>
+    <title>Register</title>
   </head>
 
   <body>
-    <%- include('partials/_header') %>
+    <!-- <%- include('partials/_header') %> -->
     <main style="margin: 1em">
       <!-- creating registration form -->
-      <form action="/login" method="POST">
-        <h2>Login</h2>
+      <form action="/register" method="POST">
+        <h2>Create Account</h2>
         <p>
           <label for="email">Enter Email:</label>
           <input type="email" name="email" style="width: 300px; margin: 1em" />
@@ -36,7 +36,7 @@
             style="width: 300px; margin: 1em"
           />
         </p>
-        <button type="submit">Log-In!</button>
+        <button type="submit" class="btn btn-primary">Register!</button>
       </form>
       <!-- End -->
     </main>

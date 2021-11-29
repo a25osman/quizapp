@@ -21,16 +21,74 @@
       <div class="loginorregister">
         <p><a href="login.ejs">Login</a></p>
 
-        <p>Register</p>
+        <p><a href="views/register.html">Register</a></p>
       </div>
     </nav>
     <main>
-      <h1>Available Quizzes</h1>
-      <section class="all-quizzes">
-        <section class="quiz-container">
-          <h3>Quiz Heading</h3>
-        </section>
-      </section>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Quiz Title</th>
+            <th scope="col">Share Quiz</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Math 101</td>
+            <td>
+              <!-- Share Button -->
+              <form method="get" action="/urls/">
+                <button
+                  style="
+                    border: 1px solid red;
+                    color: red;
+                    background-color: transparent;
+                  "
+                  type="submit"
+                >
+                  Share
+                </button>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td>Soccer Players</td>
+            <td>
+              <!-- Share Button -->
+              <form method="get" action="/urls/">
+                <button
+                  style="
+                    border: 1px solid red;
+                    color: red;
+                    background-color: transparent;
+                  "
+                  type="submit"
+                >
+                  Share
+                </button>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td>Avenegrs</td>
+            <td>
+              <!-- Share Button -->
+              <form method="get" action="/urls/">
+                <button
+                  style="
+                    border: 1px solid red;
+                    color: red;
+                    background-color: transparent;
+                  "
+                  type="submit"
+                >
+                  Share
+                </button>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </main>
   </body>
 </html>
