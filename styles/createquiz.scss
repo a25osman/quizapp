@@ -1,0 +1,12 @@
+section {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center;
+  margin: 2em;
+}
+section :hover {
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px #888888;
+}
