@@ -9,17 +9,16 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
-      .then(data => {
-        const users = data.rows;
-        res.json({ users });
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
+  // GET /profile/:user_id
+  router.get("/:user_id", (req, res) => {
+
   });
+
+  // GET /profile/:user_id/:quiz_id/result
+  router.get("/:user_id/:quiz_id/result", (req, res) => {
+
+  });
+
+
   return router;
 };
