@@ -26,7 +26,7 @@ CREATE TABLE questions(
   content TEXT  NOT NULL
 );
 
-CREATE TABLE answer_option(
+CREATE TABLE answers(
   id SERIAL PRIMARY KEY NOT NULL,
   question_id INTEGER REFERENCES questions(id) ON DELETE CASCADE,
   content TEXT NOT NULL,
