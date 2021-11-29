@@ -38,53 +38,47 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const quizzesRoutes = require("./routes/quizzes");
+const loginRoutes = require("./routes/user_validation");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/quizzes", quizzesRoutes(db));
+app.use("/login", loginRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
+app.get("/", (req, res) => {
+  res.render("index");
+});
+
 app.get("/quizzes", (req, res) => {
   db.query(`SELECT * FROM quizzes;`)
-    .then(data => {
+    .then((data) => {
       const quizzes = data.rows;
-      let templateVars = {urls: null, user: null};       
-      templateVars = {quizzes};
+      let templateVars = { urls: null, user: null };
+      templateVars = { quizzes };
       res.render("quizzes_index", templateVars); // quizzes is an array containing quiz objects old to new
     })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
     });
 });
 
-app.get("/login", (req, res) => {
-  const templateVars = { user: null };
-  res.render("login", templateVars);
-});
-
-app.get("/register", (req, res) => {
-  const templateVars = { user: null };
-  res.render("register", templateVars);
-});
-
-app.get("/index", (req, res) => {
-  let templateVars = { urls: null, user: null };
-  // if (req.session.userid) {
-  //   templateVars = {
-  //     urls: myURL(urlDatabase, req.session.userid),
-  //     user: users[req.session.userid],
-  //   };
-  // }
-  res.render("index", templateVars);
-});
+// app.get("index", (req, res) => {
+//   let templateVars = { urls: null, user: null };
+//   // if (req.session.userid) {
+//   //   templateVars = {
+//   //     urls: myURL(urlDatabase, req.session.userid),
+//   //     user: users[req.session.userid],
+//   //   };
+//   // }
+//   res.render("index", templateVars);
+// });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
