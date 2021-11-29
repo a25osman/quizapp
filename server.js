@@ -52,32 +52,34 @@ app.use("/login", loginRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-app.get("/", (req, res) => {
-  res.render("index");
-});
+// app.get("/", (req, res) => {
+//   res.render("index");
+// });
 
-app.get("/quizzes", (req, res) => {
+app.get("/", (req, res) => {
   db.query(`SELECT * FROM quizzes;`)
     .then((data) => {
       const quizzes = data.rows;
       let templateVars = { urls: null, user: null };
       templateVars = { quizzes };
-      res.render("quizzes_index", templateVars); // quizzes is an array containing quiz objects old to new
+      res.render("index", quizzes); // quizzes is an array containing quiz objects old to new
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
     });
 });
 
-// app.get("index", (req, res) => {
-//   let templateVars = { urls: null, user: null };
-//   // if (req.session.userid) {
-//   //   templateVars = {
-//   //     urls: myURL(urlDatabase, req.session.userid),
-//   //     user: users[req.session.userid],
-//   //   };
-//   // }
-//   res.render("index", templateVars);
+// app.get("/quizzes", (req, res) => {
+//   db.query(`SELECT * FROM quizzes;`)
+//     .then((data) => {
+//       const quizzes = data.rows;
+//       let templateVars = { urls: null, user: null };
+//       templateVars = { quizzes };
+//       res.render("quizzes_index", templateVars); // quizzes is an array containing quiz objects old to new
+//     })
+//     .catch((err) => {
+//       res.status(500).json({ error: err.message });
+//     });
 // });
 
 app.listen(PORT, () => {
