@@ -16,13 +16,3 @@ module.exports = (db) => {
 
   return router;
 };
-
-// app.get("/login", (req, res) => {
-//   const templateVars = { user: null };
-//   res.render("login", templateVars);
-// });
-
-// app.get("/register", (req, res) => {
-//   const templateVars = { user: null };
-//   res.render("register", templateVars);
-// });

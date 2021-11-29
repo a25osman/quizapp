@@ -14,8 +14,8 @@ module.exports = (db) => {
 
   });
 
-  // GET /profile/:user_id/:quiz_id/result
-  router.get("/:user_id/:quiz_id/result", (req, res) => {
+  // GET /profile/:user_id/:quiz_id  --> Quiz Result Page
+  router.get("/:user_id/:quiz_id", (req, res) => {
 
   });
 

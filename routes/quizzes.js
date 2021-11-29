@@ -15,7 +15,7 @@ module.exports = (db) => {
     .then(data => {
       const quiz = data.rows[0];
       let templateVars = {quiz};
-      res.render("quizzes_index", templateVars); // quiz is an object containing quiz questions and answers
+      res.render("quiz_show", templateVars); // quiz is an object containing quiz questions and answers
     })
     .catch(err => {
       res
@@ -31,7 +31,7 @@ module.exports = (db) => {
       .then(data => {
         const user = data.rows[0];
         let templateVars = {user};
-        res.render("quiz_new", templateVars); // user is an object which contains user info
+        res.render("quizzes_new", templateVars); // user is an object which contains user info
       })
     } else {
       res.redirect("/login")
