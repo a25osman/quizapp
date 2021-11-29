@@ -33,6 +33,7 @@ module.exports = (db) => {
         let templateVars = {user};
         res.render("quizzes_new", templateVars); // user is an object which contains user info
       })
+      .catch(err => console.log(err));
     } else {
       res.redirect("/login")
     }
