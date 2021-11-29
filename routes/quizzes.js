@@ -3,8 +3,8 @@ const router  = express.Router();
 
 module.exports = (db) => {
 
-  // GET /quizzes/:quiz_id
-  router.get("/:quiz_id", (req, res) => {
+  // GET /quizzes/quiz/:quiz_id
+  router.get("/quiz/:quiz_id", (req, res) => {
     db.query(`
     SELECT privacy, title, questions.id, questions.content, answers.id, answers.content
     FROM quizzes
@@ -39,6 +39,8 @@ module.exports = (db) => {
     // }
     res.render("quizzes_new")
   });
+
+
 
   return router;
 };
