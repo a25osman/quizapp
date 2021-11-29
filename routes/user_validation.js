@@ -9,7 +9,7 @@ module.exports = (db) => {
   });
 
   // GET /registration
-  router.get("/register", (req, res) => {
+  router.get("/", (req, res) => {
     const templateVars = { user: null };
     res.render("/", templateVars);
   });

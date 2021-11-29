@@ -54,19 +54,18 @@ app.use("/register", loginRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  db.query(
-    `SELECT * FROM quizzes
-              WHERE privacy = FALSE
-  ;`
-  )
+  db.query(`SELECT * FROM quizzes WHERE privacy = FALSE;`)
     .then((data) => {
       const quizzes = data.rows;
-      console.log("++++++++", quizzes);
       res.render("index", { quizzes }); // quizzes is an array containing quiz objects old to new
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
     });
+});
+
+app.get("/new", (req, res) => {
+  res.render("quizzes_new");
 });
 
 app.listen(PORT, () => {
