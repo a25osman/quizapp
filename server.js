@@ -56,7 +56,7 @@ app.get("/", (req, res) => {
   db.query(`SELECT * FROM quizzes WHERE privacy = FALSE;`)
     .then((data) => {
       const quizzes = data.rows;
-      res.render("index", {quizzes}); // quizzes is an array containing quiz objects old to new
+      res.render("index", { quizzes }); // quizzes is an array containing quiz objects old to new
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
@@ -64,9 +64,8 @@ app.get("/", (req, res) => {
 });
 
 app.get("/new", (req, res) => {
-  res.render("quizzes_new")
+  res.render("quizzes_new");
 });
-
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
