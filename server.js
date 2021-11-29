@@ -65,6 +65,27 @@ app.get("/quizzes", (req, res) => {
     });
 });
 
+app.get("/login", (req, res) => {
+  const templateVars = { user: null };
+  res.render("login", templateVars);
+});
+
+app.get("/register", (req, res) => {
+  const templateVars = { user: null };
+  res.render("register", templateVars);
+});
+
+app.get("/index", (req, res) => {
+  let templateVars = { urls: null, user: null };
+  // if (req.session.userid) {
+  //   templateVars = {
+  //     urls: myURL(urlDatabase, req.session.userid),
+  //     user: users[req.session.userid],
+  //   };
+  // }
+  res.render("index", templateVars);
+});
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
