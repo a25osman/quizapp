@@ -51,8 +51,10 @@
           </tr>
         </thead>
         <tbody>
+          <% for (let quiz of quizzes) { %>
           <tr>
-            <td>Math 101</td>
+            <td><%= quiz.title %></td>
+
             <td>
               <!-- Share Button -->
               <form method="get" action="/urls/">
@@ -69,42 +71,7 @@
               </form>
             </td>
           </tr>
-          <tr>
-            <td>Soccer Players</td>
-            <td>
-              <!-- Share Button -->
-              <form method="get" action="/urls/">
-                <button
-                  style="
-                    border: 1px solid red;
-                    color: red;
-                    background-color: transparent;
-                  "
-                  type="submit"
-                >
-                  Share
-                </button>
-              </form>
-            </td>
-          </tr>
-          <tr>
-            <td>Avenegrs</td>
-            <td>
-              <!-- Share Button -->
-              <form method="get" action="/urls/">
-                <button
-                  style="
-                    border: 1px solid red;
-                    color: red;
-                    background-color: transparent;
-                  "
-                  type="submit"
-                >
-                  Share
-                </button>
-              </form>
-            </td>
-          </tr>
+          <% } %>
         </tbody>
       </table>
     </main>

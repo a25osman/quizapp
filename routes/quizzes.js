@@ -6,10 +6,10 @@ module.exports = (db) => {
   // GET /quizzes/:quiz_id
   router.get("/:quiz_id", (req, res) => {
     db.query(`
-    SELECT privacy, title, questions.id, questions.content, answer_options.id, answer_options.content
+    SELECT privacy, title, questions.id, questions.content, answers.id, answers.content
     FROM quizzes
     JOIN questions ON quizzes.id = quiz_id
-    JOIN answer_options ON questions.id = question_id
+    JOIN answers ON questions.id = question_id
     WHERE quizzes.id = $1
     ;`, [req.params.quiz_id])
     .then(data => {
@@ -37,6 +37,6 @@ module.exports = (db) => {
       res.redirect("/login")
     }
   });
-  
+
   return router;
 };
