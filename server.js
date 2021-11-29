@@ -46,6 +46,7 @@ app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/quizzes", quizzesRoutes(db));
 app.use("/login", loginRoutes(db));
+app.use("/register", loginRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -53,18 +54,20 @@ app.use("/login", loginRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  db.query(`SELECT * FROM quizzes
-              WHERE privacy = FALSE
-  ;`)
+  db.query(`SELECT * FROM quizzes WHERE privacy = FALSE;`)
     .then((data) => {
       const quizzes = data.rows;
-      console.log('++++++++', quizzes)
       res.render("index", {quizzes}); // quizzes is an array containing quiz objects old to new
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
     });
 });
+
+app.get("/new", (req, res) => {
+  res.render("quizzes_new")
+});
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

@@ -26,17 +26,18 @@ module.exports = (db) => {
 
   // GET /quizzes/new
   router.get("/new", (req, res) => {
-    if (req.session.userid){
-      db.query(`SELECT * FROM users WHERE id = $1;`, [req.session.userid])
-      .then(data => {
-        const user = data.rows[0];
-        let templateVars = {user};
-        res.render("quizzes_new", templateVars); // user is an object which contains user info
-      })
-      .catch(err => console.log(err));
-    } else {
-      res.redirect("/login")
-    }
+    // if (req.session.userid){
+    //   db.query(`SELECT * FROM users WHERE id = $1;`, [req.session.userid])
+    //   .then(data => {
+    //     const user = data.rows[0];
+    //     let templateVars = {user};
+    //     res.render("quizzes_new", templateVars); // user is an object which contains user info
+    //   })
+    //   .catch(err => console.log(err));
+    // } else {
+    //   res.redirect("/login")
+    // }
+    res.render("quizzes_new")
   });
 
   return router;
