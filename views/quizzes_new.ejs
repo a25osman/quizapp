@@ -35,32 +35,40 @@
 
   <body>
     <%- include('nav') %>
-    <h1>Create Quiz</h1>
-    <label for="QuizTitle">Quiz Title:</label>
-    <input type="text" />
-    <br />
+    
     <main class="quiz-container">
       <section class="newquiz">
         <form id="myform" action="/" method="POST">
-          <label for="question">Question</label>
-          <input type="text" name="question" />
+          <h1>Create Quiz</h1>
+          <label for="QuizTitle">Quiz Title:</label>
+          <input type="text" name=title />
           <br />
-          <input type="radio" name="letsans1" />  
-          <label for="question">Option 1</label>
-          <input type="text" name="firstanswer" />
-          <br />
-          <input type="radio" name="letsans2" />   
-          <label for="question">Option 2</label>
-          <input type="text" name="secondanswer" />
-          <br />
-          <input type="radio" name="letsans3" />  
-          <label for="question">Option 3</label>
-          <input type="text" name="thirdanswer" />
-          <br />
-          <input type="radio" name="letsans4" />   
-          <label for="question">Option 4</label>
-          <input type="text" name="fourthanswer" />
-          <br />
+          <div class="question">
+            <label for="question">Question #1</label>
+            <input type="text" name="question0[]" />
+            <br />
+            <label for="question">Option A</label>
+            <input type="text" name="answer0[]" />
+            <br />
+            <label for="question">Option B</label>
+            <input type="text" name="answer0[]" />
+            <br />
+            <label for="question">Option C</label>
+            <input type="text" name="answer0[]" />
+            <br />
+            <label for="question">Option D</label>
+            <input type="text" name="answer0[]" />
+            <br />
+
+            <label for="options">Choose the correct answer:</label>
+            <select name="options0[]" id="correct-ans">
+              <option value="0">Option A</option>
+              <option value="1">Option B</option>
+              <option value="2">Option C</option>
+              <option value="3">Option D</option>
+            </select>
+          </div>
+
         </form>
       </section>
     </main>
