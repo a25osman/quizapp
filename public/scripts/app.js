@@ -2,6 +2,7 @@
 $(document).ready(function () {
   $(".addquestion").on("click", function () {
     const questionNumber = $(".question").length;
+    const form = "#myform";
     $("#myform").append(`
         <div class="question">
 
@@ -28,9 +29,9 @@ $(document).ready(function () {
           <option value="3">Option D</option>
         </select>
       </div>`);
-  });
 
-  $(".deletequestion").on("click", function () {
-    $("#myform").remove();
+    $(".deletequestion").on("click", function () {
+      $("#myform").remove();
+    });
   });
 });
