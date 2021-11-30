@@ -40,7 +40,28 @@ module.exports = (db) => {
     res.render("quizzes_new")
   });
 
+  router.post("/",(req, res) =>{
+    let title = req.body.title;
 
+    let q1 = req.body.q1
+
+    let op1 = req.body.op1;
+    let op2 = req.body.op2;
+    let op3 = req.body.op3;
+    let op4 = req.body.op4;
+
+    let ans1 = req.body.bt1;
+    let ans2 = req.body.bt2;
+    let ans3 = req.body.bt3;
+    let ans4 = req.body.bt4;
+
+    db.query(`INSERT INTO quizzes (title) VALUES $1;`, [req.body.title])
+    .then(data => {
+      data.rows[0]
+    }).catch((err)=>{
+      console.log(err.message);
+    })
+  });
 
   return router;
 };
