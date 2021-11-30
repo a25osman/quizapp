@@ -1,10 +1,13 @@
 // Client facing scripts here
 $(document).ready(function () {
+  let counter = 0;
   $(".addquestion").on("click", function () {
     const questionNumber = $(".question").length;
-    const form = "#myform";
+
+    counter++;
+
     $("#myform").append(`
-        <div class="question">
+        <div class="mainquestion${counter}">
 
         <label for="question">Question #${1 + questionNumber}</label>
         <input type="text" name="question${questionNumber}[]" />
@@ -31,7 +34,7 @@ $(document).ready(function () {
       </div>`);
 
     $(".deletequestion").on("click", function () {
-      $("#myform").remove();
+      $(`.mainquestion${counter}`).remove();
     });
   });
 });
