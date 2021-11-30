@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = (db) => {
-  // GET /quizzes/quiz/:quiz_id
+  // GET /quiz/:quiz_id
   router.get("/quiz/:quiz_id", (req, res) => {
     db.query(
       `
@@ -24,7 +24,7 @@ module.exports = (db) => {
       });
   });
 
-  // GET /quizzes/new
+  // GET /new
   router.get("/new", (req, res) => {
     // if (req.session.userid){
     //   db.query(`SELECT * FROM users WHERE id = $1;`, [req.session.userid])
@@ -41,7 +41,7 @@ module.exports = (db) => {
   });
 
   // POST /quizzes/
-  router.post("/", (req, res) => {
+  router.post("/new", (req, res) => {
     db.query(`INSERT INTO quizzes (title) VALUES ($1);`, [req.body.title])
       .then((data) => {
         data.rows[0];
