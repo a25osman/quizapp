@@ -64,12 +64,6 @@ app.get("/", (req, res) => {
     });
 });
 
-app.post("/", (req, res) => {
-  console.log(req.body);
-
-  res.redirect("/");
-});
-
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
