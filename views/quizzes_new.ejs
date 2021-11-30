@@ -41,31 +41,53 @@
     <br />
     <main class="quiz-container">
       <section class="newquiz">
-        <form id="myform" action="/" method="POST">
-          <label for="question">Question</label>
-          <input type="text" name="question" />
+        <form id="form1" action="/" method="POST">
+          <label for="question1">Question</label>
+          <input type="text" name="question1" />
           <br />
-          <input type="radio" id="xy" name="letsans" />  
-          <label for="question">Option 1</label>
-          <input type="text" name="firstanswer" />
+          <input type="checkbox" name="Q1correct" value="A" /> 
+          <label for="question">A</label>
+          <input type="text" name="Q1firstanswer" />
           <br />
-          <input type="radio" id="ty" name="letsans" />   
-          <label for="question">Option 2</label>
-          <input type="text" name="secondanswer" />
+          <input type="checkbox" name="Q1correct" value="B" />    
+          <label for="question">B</label>
+          <input type="text" name="Q1secondanswer" />
           <br />
-          <input type="radio" name="letsans" />  
-          <label for="question">Option 3</label>
-          <input type="text" name="thirdanswer" />
+          <input type="checkbox" name="Q1correct" value="C" />   
+          <label for="question">C</label>
+          <input type="text" name="Q1thirdanswer" />
           <br />
-          <input type="radio" name="letsans" />   
-          <label for="question">Option 4</label>
-          <input type="text" name="fourthanswer" />
+          <input type="checkbox" name="Q1correct" value="D" />   
+          <label for="question">D</label>
+          <input type="text" name="Q1fourthanswer" />
+          <br />
+          <br />
+
+          <label for="question2">Question</label>
+          <input type="text" name="question2" />
+          <br />
+          <input type="checkbox" name="Q2correct" value="A" /> 
+          <label for="question">A</label>
+          <input type="text" name="Q2firstanswer" />
+          <br />
+          <input type="checkbox" name="Q2correct" value="A" />    
+          <label for="question">B</label>
+          <input type="text" name="Q2secondanswer" />
+          <br />
+          <input type="checkbox" name="Q2correct" value="A" />   
+          <label for="question">C</label>
+          <input type="text" name="Q2thirdanswer" />
+          <br />
+          <input type="checkbox" name="Q2correct" value="A" />   
+          <label for="question">D</label>
+          <input type="text" name="Q2fourthanswer" />
+          <br />
           <br />
         </form>
       </section>
     </main>
 
-    <button class="addquestion">Add Question</button>
+    <!-- <button class="addquestion">Add Question</button> -->
 
     <form action="/">
       <p>Please choose if you would like your quiz to be private or public:</p>
@@ -75,6 +97,14 @@
         <label for="private">Private</label><br />
     </form>
 
-    <button type="submit" form="myform" class="postquiz">Post Quiz</button>
+    <button type="submit" onclick="submitForms()" class="postquiz">
+      Post Quiz
+    </button>
+    <script>
+      submitForms = function () {
+        document.getElementById("form1").submit();
+        document.getElementById("form2").submit();
+      };
+    </script>
   </body>
 </html>
