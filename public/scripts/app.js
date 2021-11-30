@@ -1,10 +1,10 @@
 // Client facing scripts here
 $(document).ready(function () {
   $(".addquestion").on("click", function () {
-    const questionNumber = $('.question').length;
+    const questionNumber = $(".question").length;
     $("#myform").append(`
         <div class="question">
-        
+
         <label for="question">Question #${1 + questionNumber}</label>
         <input type="text" name="question${questionNumber}[]" />
         <br />
@@ -28,5 +28,9 @@ $(document).ready(function () {
           <option value="3">Option D</option>
         </select>
       </div>`);
+  });
+
+  $(".deletequestion").on("click", function () {
+    $("#myform").remove();
   });
 });

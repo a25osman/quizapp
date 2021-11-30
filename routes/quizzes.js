@@ -40,7 +40,7 @@ module.exports = (db) => {
     res.render("quizzes_new");
   });
 
-  // do we need returning* below??
+  // POST /quizzes/
   router.post("/", (req, res) => {
     db.query(`INSERT INTO quizzes (title) VALUES ($1);`, [req.body.title])
       .then((data) => {

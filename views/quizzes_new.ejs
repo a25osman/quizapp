@@ -35,13 +35,13 @@
 
   <body>
     <%- include('nav') %>
-    
+
     <main class="quiz-container">
       <section class="newquiz">
-        <form id="myform" action="/" method="POST">
+        <form id="myform" action="/quizzes" method="POST">
           <h1>Create Quiz</h1>
           <label for="QuizTitle">Quiz Title:</label>
-          <input type="text" name=title />
+          <input type="text" name="title" />
           <br />
           <div class="question">
             <label for="question">Question #1</label>
@@ -68,12 +68,12 @@
               <option value="3">Option D</option>
             </select>
           </div>
-
         </form>
       </section>
     </main>
 
-    <!-- <button class="addquestion">Add Question</button> -->
+    <button class="addquestion">Add Question</button>
+    <button class="deletequestion">Remove Question</button>
 
     <form action="/">
       <p>Please choose if you would like your quiz to be private or public:</p>
@@ -83,14 +83,6 @@
         <label for="private">Private</label><br />
     </form>
 
-    <button type="submit" onclick="submitForms()" class="postquiz">
-      Post Quiz
-    </button>
-    <script>
-      submitForms = function () {
-        document.getElementById("form1").submit();
-        document.getElementById("form2").submit();
-      };
-    </script>
+    <button type="submit" form="myform" class="postquiz">Post Quiz</button>
   </body>
 </html>
