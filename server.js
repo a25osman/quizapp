@@ -39,6 +39,7 @@ const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const quizzesRoutes = require("./routes/quizzes");
 const loginRoutes = require("./routes/user_validation");
+const { Router } = require("express");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -62,7 +63,6 @@ app.get("/", (req, res) => {
       res.status(500).json({ error: err.message });
     });
 });
-
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
