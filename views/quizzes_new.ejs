@@ -73,7 +73,7 @@
       </section>
     </main>
 
-    <button class="addquestion">Add Question</button>
+    <!-- <button class="addquestion">Add Question</button> -->
 
     <form action="/">
       <p>Please choose if you would like your quiz to be private or public:</p>
@@ -83,6 +83,14 @@
         <label for="private">Private</label><br />
     </form>
 
-    <button type="submit" form="myform" class="postquiz">Post Quiz</button>
+    <button type="submit" onclick="submitForms()" class="postquiz">
+      Post Quiz
+    </button>
+    <script>
+      submitForms = function () {
+        document.getElementById("form1").submit();
+        document.getElementById("form2").submit();
+      };
+    </script>
   </body>
 </html>
