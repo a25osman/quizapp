@@ -7,7 +7,7 @@ $(document).ready(function () {
     counter++;
 
     $("#myform").append(`
-        <div class="mainquestion${counter}">
+        <div class="mainquestion${questionNumber}">
 
         <label for="question">Question #${1 + questionNumber}</label>
         <input type="text" name="question${questionNumber}[]" />
@@ -34,7 +34,7 @@ $(document).ready(function () {
       </div>`);
 
     $(".deletequestion").on("click", function () {
-      $(`.mainquestion${counter}`).remove();
+      $(`.mainquestion${questionNumber}`).remove();
     });
   });
 });
