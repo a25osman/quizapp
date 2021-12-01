@@ -46,17 +46,34 @@
         <thead>
           <tr>
             <th scope="col">Quiz Title</th>
-            <th scope="col">Share Quiz</th>
+            <th scope="col">Start Quiz</th>
+            <th scope="col">Delete Quiz</th>
           </tr>
         </thead>
         <tbody>
           <% for (let quiz of quizzes) { %>
           <tr>
             <td><%= quiz.title %></td>
+            
+            <td>
+              <!-- Start Button -->
+              <form method="GET" action="/quiz/<%= quiz.id %>">
+                <button
+                  style="
+                    border: 1px solid blue;
+                    color: blue;
+                    background-color: transparent;
+                  "
+                  type="submit"
+                >
+                  Start!
+                </button>
+              </form>
+            </td>
 
             <td>
               <!-- Share Button -->
-              <form method="get" action="/urls/">
+              <form method="POST" action="/quiz/<%= quiz.id %>/delete">
                 <button
                   style="
                     border: 1px solid red;
@@ -65,10 +82,11 @@
                   "
                   type="submit"
                 >
-                  Share
+                  Delete!
                 </button>
               </form>
             </td>
+            
           </tr>
           <% } %>
         </tbody>
