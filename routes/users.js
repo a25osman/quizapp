@@ -18,8 +18,6 @@ module.exports = (db) => {
 
     db.query(`SELECT * FROM quizzes WHERE user_id = $1;`, [userid])
     .then(data => {
-      console.log("-------",data.rows)
-      console.log("------",req.session.username)
       let templateVars = {quizzes: data.rows, userInfo: req.session.user};
       res.render("profile_user", templateVars);
     })

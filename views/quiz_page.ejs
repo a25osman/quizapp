@@ -4,43 +4,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quiz Attempt</title>
+    <title>Quiz Page</title>
   </head>
+
   <body>
     <%- include('nav') %>
     <h1>Quiz Title</h1>
     <main class="quizattempt-container">
       <section class="newquiz">
         <form id="myform" action="/new" method="POST">
-          <h1>Attempt Quiz/h1>
-          <label for="QuizTitle">Quiz Title:</label>
-          <label for="quiztitlehere">Quiz title goes here</label>
-          <br />
-          <div class="mainquiz">
-            <label for="question">Question #1</label>
-            <label for="questionone">Question goes here</label>
-            <br />
-            <label for="question">Option A</label>
-            <label for="firstquestion">First answer</label>
-            <br />
-           <label for="question">Option A</label>
-            <label for="secondquestion">Second answer</label>
-            <br />
-            <label for="question">Option A</label>
-            <label for="secondquestion">Third answer</label>
-            <br />
-           <label for="question">Option A</label>
-            <label for="secondquestion">Fourth answer</label>
-            <br />
-
-            <label for="options">Choose the correct answer:</label>
-            <select name="options0[]" id="correct-ans">
-              <option value="0">Option A</option>
-              <option value="1">Option B</option>
-              <option value="2">Option C</option>
-              <option value="3">Option D</option>
-            </select>
-          </div>
+          
         </form>
       </section>
     </main>
