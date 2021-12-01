@@ -64,7 +64,6 @@ app.use("/logout", logoutRoutes(db));
 
 app.get("/", (req, res) => {
   if (req.session.userid){
-    console.log("hellooooo")
     db.query(`SELECT * FROM quizzes WHERE privacy = FALSE;`)
       .then((data) => {
         const quizzes = data.rows;

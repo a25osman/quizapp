@@ -8,19 +8,19 @@ const createElement = function (questionNumber) {
         <input type="text" name="question${questionNumber}[]" />
         <br />
         <label for="question">Option A</label>
-        <input type="text" name="answer${questionNumber}[]" />
+        <input type="text" name="choices${questionNumber}[]" />
         <br />
         <label for="question">Option B</label>
-        <input type="text" name="answer${questionNumber}[]" />
+        <input type="text" name="choices${questionNumber}[]" />
         <br />
         <label for="question">Option C</label>
-        <input type="text" name="answer${questionNumber}[]" />
+        <input type="text" name="choices${questionNumber}[]" />
         <br />
         <label for="question">Option D</label>
-        <input type="text" name="answer${questionNumber}[]" />
+        <input type="text" name="choices${questionNumber}[]" />
         <br />
         <label for="options">Choose the correct answer:</label>
-        <select name="options${questionNumber}[]" id="correct-ans">
+        <select name="answer_index${questionNumber}[]" id="correct-ans">
           <option value="0">Option A</option>
           <option value="1">Option B</option>
           <option value="2">Option C</option>
@@ -47,11 +47,11 @@ $(document).ready(function () {
         element.setAttribute("class", `question question-${i}`);
         element.firstElementChild.innerText = `Question #${1 + i}`;
         element.children[1].name = `question${i}[]`;
-        element.children[4].name = `answer${i}[]`;
-        element.children[7].name = `answer${i}[]`;
-        element.children[10].name = `answer${i}[]`;
-        element.children[13].name = `answer${i}[]`;
-        element.children[16].name = `answer${i}[]`;
+        element.children[4].name = `choices${i}[]`;
+        element.children[7].name = `choices${i}[]`;
+        element.children[10].name = `choices${i}[]`;
+        element.children[13].name = `choices${i}[]`;
+        element.children[16].name = `choices${i}[]`;
       });
       return false;
     });

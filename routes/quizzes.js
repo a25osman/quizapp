@@ -44,13 +44,18 @@ module.exports = (db) => {
   // POST /quizzes/
   router.post("/new", (req, res) => {
     console.log(req.body)
-    // let userId = req.session.userId;
-    let numberOfQuestions = (Object.keys(req.body).length - 1) / 3;
-    let userID = 1;
+    let userid = req.session.userid;
+    let numberOfQuestions = (Object.keys(req.body).length - 2) / 3;
     let quizID;
+    let privacy = req.body.privateorpublic;
+    if (privacy === "Private") {
+      privacy = true;
+    } else {
+      privacy = false;
+    }
     db.query(
-      `INSERT INTO quizzes (user_id, title) VALUES ($1, $2) RETURNING *;`,
-      [userID, req.body.title]
+      `INSERT INTO quizzes (user_id, title, privacy) VALUES ($1, $2, $3) RETURNING *;`,
+      [userid, req.body.title, privacy]
     )
       .then((data) => {
         quizID = data.rows[0].id;
