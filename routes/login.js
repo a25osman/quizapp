@@ -20,12 +20,13 @@ module.exports = (db) => {
       if (bcrypt.compareSync(password, data.rows[0].password)) {
         userid = data.rows[0].id
         req.session.userid = userid;
+        req.session.user = data.rows[0];
         res.redirect('/');
       }
     })
     .catch((err) => {
       res.send('Incorrect Username and/or Password!')
-    });  
+    });
   })
 
   return router;
