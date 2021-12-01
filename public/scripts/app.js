@@ -40,7 +40,12 @@ $(document).ready(function () {
 
     $(".deletequestion").on("click", function (e) {
       e.preventDefault();
-
+      //debugger;
+      e.target.parentElement.childNodes[3].value = "";
+      e.target.parentElement.childNodes[9].value = "";
+      e.target.parentElement.childNodes[15].value = "";
+      e.target.parentElement.childNodes[21].value = "";
+      e.target.parentElement.childNodes[27].value = "";
       e.target.parentElement.remove();
       $(".question").each((i, element) => {
         console.log(element, i);
@@ -56,6 +61,4 @@ $(document).ready(function () {
       return false;
     });
   });
-
-  $(".privorpub").hidden();
 });

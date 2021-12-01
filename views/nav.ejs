@@ -1,58 +1,36 @@
 <header>
   <nav class="navbar navbar-expand-md navbar-dark bg-success">
     <a class="navbar-brand" href="/index">QuizApp</a>
-    <!-- <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button> -->
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <!-- <a class="nav-item nav-link" href="/urls">My URLs</a>
-        <a class="nav-item nav-link" href="/urls/new">Create New URL</a> -->
-      </div>
+
+    <% if (!userInfo) { %>
+    <div class="logindiv">
+      <form action="/login" method="POST">
+        <label>Please log in Here:</label>
+        <div>
+          <label for="email">Enter Email:</label>
+          <input type="email" name="email" style="margin: 1em" />
+        </div>
+        <div>
+          <label for="password">Enter Password:</label>
+          <input type="password" name="password" style="margin: 1em" />
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin: 1em">
+          Login
+        </button>
+      </form>
     </div>
-    <!-- ------- -->
-
-    <!-- Creating login button link -->
-    <!-- <a class="navbar-brand" href="/login">Login</a> -->
-
-    <!-- Creating register button link -->
-    <!-- <a class="navbar-brand" href="/register">Register</a> -->
-
-
-
-    <!-- Creating login field and button -->
-      <% if (!userInfo) { %>
-        <form action="/login" method="POST">
-          <label>Please log in Here:</label>
-          <div>
-            <label for="email">Enter Email:</label>
-            <input type="email" name="email" style="margin: 1em">
-          </div>
-          <div> 
-            <label for="password">Enter Password:</label>
-            <input type="password" name="password" style="margin: 1em">
-          </div>
-          <button type="submit" class="btn btn-primary" style="margin: 1em">Login</button>
-        </form>
-      <% } %> 
+    <% } %>
     <!-- end -->
 
     <!-- Creating logout field and button -->
-      <% if (userInfo) { %>
-        <form action="/logout" method="POST">
-          <label>Logged In As: <%= userInfo["name"] %>!</label>
-          <button type="submit" class="btn btn-primary" style="margin: 1em">Logout</button>
-        </form>
-      <% } %> 
+    <% if (userInfo) { %>
+    <form action="/logout" method="POST">
+      <label>Logged In As: <%= userInfo["name"] %>!</label>
+      <button type="submit" class="btn btn-primary" style="margin: 1em">
+        Logout
+      </button>
+    </form>
+    <% } %>
     <!-- end -->
-    
   </nav>
 </header>

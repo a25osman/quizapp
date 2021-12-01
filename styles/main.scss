@@ -1,20 +1,30 @@
 nav {
   color: #ffff;
   background-color: #e1793e;
-  height: 120px;
+  height: auto;
   width: 100%;
   top: 0;
   padding-left: 1.5em;
   padding-right: 1.5em;
   padding-top: 1.5em;
+  padding-bottom: 1.5em;
   z-index: 1;
-  position: fixed;
+  position: sticky;
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
+  overflow: hidden;
 }
 
+.logindiv {
+  max-height: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
 body {
-  padding-top: 8em;
+  margin-top: 6em;
   background: rgb(163, 208, 219);
 }
 
