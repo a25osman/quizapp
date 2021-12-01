@@ -16,14 +16,13 @@ module.exports = (db) => {
       [req.params.quiz_id]
     )
       .then((data) => {
-        // console.log(data.rows)
-        console.log("refresh succesful")
         const array = data.rows;
         let numRuns = 0;
         let numQuestions = array.length/4;
         let quiz = [];
         while (numRuns < numQuestions) {
           let quizQuestion = {
+            index: null,
             title: null,
             quiz_id: null,
             question_id: null,
@@ -33,6 +32,7 @@ module.exports = (db) => {
             is_correct: []
           };
           for (let i = 0 + 4*numRuns; i < 4 + 4*numRuns; i++) {
+            quizQuestion.index = numRuns;
             quizQuestion.title = array[i].title;
             quizQuestion.quiz_id = array[i].quiz_id;
             quizQuestion.question_id = array[i].question_id;
@@ -46,12 +46,16 @@ module.exports = (db) => {
         }
         let templateVars = {quiz: quiz, userInfo: req.session.user};
         console.log("---TEMPLATE VARS RETURNS QUIZ-\n\n\n", quiz)
-        res.render("quiz_page", templateVars); // user is an object which contains user info
+        res.render("quiz_page", templateVars);
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
       });
   });
+
+  router.post("/:quiz_id", (req, res) => {
+    console.log(req.body);
+  })
 
   return router;
 };
