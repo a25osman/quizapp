@@ -40,7 +40,7 @@
     <h1>Quiz Title goes here</h1>
     <main class="quizattempt-container">
       <section class="newquiz">
-        <form id="myform" action="/quiz" method="POST">
+        <form id="myform" action="/quiz/<%= quiz.title %>" method="POST">
           <ol>
             <li>
               <h3>CSS Stands for...</h3>
