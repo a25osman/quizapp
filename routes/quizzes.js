@@ -64,19 +64,19 @@ module.exports = (db) => {
             .then((data) => {
               questionID = data.rows[0].id;
               for (let j in req.body[str_answer]) {
-                if (j === Number(req.body[str_options][0])) {
+                if (j === req.body[str_options][0]) {
                   db.query(
                     `INSERT INTO answers (question_id, content, is_correct) VALUES ($1, $2, true) RETURNING *;`,
                     [questionID, req.body[str_answer][j]]
                   )
-                    .then(res.redirect("/"))
+                    .then()
                     .catch((err) => console.log(err.message));
                 } else {
                   db.query(
                     `INSERT INTO answers (question_id, content) VALUES ($1, $2) RETURNING *;`,
                     [questionID, req.body[str_answer][j]]
                   )
-                    .then(res.redirect("/"))
+                    .then()
                     .catch((err) => console.log(err.message));
                 }
               }
@@ -85,6 +85,7 @@ module.exports = (db) => {
         }
       })
       .catch((err) => console.log(err.message));
+    res.redirect("/");
   });
 
   return router;
