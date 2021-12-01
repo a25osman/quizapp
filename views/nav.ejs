@@ -27,14 +27,8 @@
 
     <!-- Creating logout field and button -->
     <% if (userInfo) { %>
-<<<<<<< HEAD
     <form  action="/logout" method="POST">
-=======
-    <form action="/logout" method="POST">
-
->>>>>>> aee354da1a4f3e6cefcd4fbd4772e53b1297bbc0
       <Label>Logged In As: <a class = username href="/users/creator/<%= userInfo.id %>"><%= userInfo["name"] %>!</a></Label>
-
       <button type="submit" class="btn btn-primary" style="margin: 1em">
         Logout
       </button>
