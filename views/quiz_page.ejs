@@ -37,59 +37,51 @@
 
   <body>
     <%- include('nav') %>
-    <h1>Quiz Title goes here</h1>
+    <h1><%=quiz[0].title %></h1>
     <main class="quizattempt-container">
       <section class="newquiz">
-        <form id="myform" action="/quiz/<%= quiz.title %>" method="POST">
-          <ol>
+        <form id="myform" action="/quiz/<%= quiz.quiz_id %>" method="POST">
+          <% quiz.forEach(element => { %>
+
+          <ul>
             <li>
-              <h3>CSS Stands for...</h3>
+              <h3><%= element.question %></h3>
 
               <div>
-                <input
-                  type="radio"
-                  name="question-1-answers"
-                  id="question-1-answers-A"
-                  value="A"
-                />
                 <label for="question-1-answers-A"
-                  >A) Computer Styled Sections
+                  >A) <%= element.option[0] %>
                 </label>
               </div>
 
               <div>
-                <input
-                  type="radio"
-                  name="question-1-answers"
-                  id="question-1-answers-B"
-                  value="B"
-                />
                 <label for="question-1-answers-B"
-                  >B) Cascading Style Sheets</label
+                  >B) <%= element.option[1] %></label
                 >
               </div>
 
               <div>
-                <input
-                  type="radio"
-                  name="question-1-answers"
-                  id="question-1-answers-C"
-                  value="C"
-                />
-                <label for="question-1-answers-C">C) Crazy Solid Shapes</label>
+                <label for="question-1-answers-C"
+                  >C) <%= element.option[2] %></label
+                >
               </div>
 
               <div>
-                <input
-                  type="radio"
-                  name="question-1-answers"
-                  id="question-1-answers-D"
-                  value="D"
-                />
-                <label for="question-1-answers-D">D) None of the above</label>
+                <label for="question-1-answers-D"
+                  >D) <%= element.option[3] %></label
+                >
               </div>
             </li>
-          </ol>
+          </ul>
+          <label for="options">Choose the correct answer:</label>
+          <select name="answer_index${questionNumber}[]" id="correct-ans">
+            <option value="0"><%= element.option[0] %></option>
+            <option value="1"><%= element.option[1] %></option>
+            <option value="2"><%= element.option[2] %></option>
+            <option value="3"><%= element.option[3] %></option>
+          </select>
+
+          <% }) %>
+          <br />
           <input type="submit" value="Submit Quiz" />
         </form>
       </section>
