@@ -1,6 +1,6 @@
 <header>
   <nav class="navbar navbar-expand-md navbar-dark bg-success">
-    <a class="navbar-brand" href="/index">QuizApp</a>
+    <a class="navbar-brand" href="/">QuizApp</a>
 
     <% if (!userInfo) { %>
     <div class="logindiv">
@@ -25,7 +25,7 @@
     <!-- Creating logout field and button -->
     <% if (userInfo) { %>
     <form action="/logout" method="POST">
-      <label>Logged In As: <%= userInfo["name"] %>!</label>
+      <Label>Logged In As: <a class = username href="/users/creator/<%= userInfo.id %>"><%= userInfo["name"] %>!</a></Label>
       <button type="submit" class="btn btn-primary" style="margin: 1em">
         Logout
       </button>
