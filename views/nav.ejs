@@ -25,7 +25,7 @@
     <!-- Creating logout field and button -->
     <% if (userInfo) { %>
     <form action="/logout" method="POST">
-      <label>Logged In As: <%= userInfo["name"] %>!</label>
+      <label>Logged In As: <a href=""></a> %= userInfo["name"] %>! </label>
       <button type="submit" class="btn btn-primary" style="margin: 1em">
         Logout
       </button>
