@@ -38,7 +38,13 @@
 
     <main class="quiz-container">
       <section class="newquiz">
-        <form id="myform" action="/new" method="POST">
+        <form
+          name="myForm"
+          id="myform"
+          action="/new"
+          onsubmit="return validateForm()"
+          method="POST"
+        >
           <h1>Create Quiz</h1>
           <label for="QuizTitle">Quiz Title:</label>
           <input type="text" name="title" />
@@ -100,6 +106,15 @@
     <label for="html">Public</label><br />
     <input type="radio" id="private" name="privateorpublic" value="Private" />
       <label for="private">Private</label><br /> -->
+    <script>
+      function validateForm() {
+        var x = document.forms["myForm"]["fname"].value;
+        if (x == "") {
+          alert("Name must be filled out");
+          return false;
+        }
+      }
+    </script>
 
     <button type="submit" form="myform" class="postquiz">Post Quiz</button>
   </body>
