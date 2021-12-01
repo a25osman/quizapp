@@ -16,6 +16,7 @@ app.use(cookieSession({
   keys: ['key1']
 }));
 
+
 // PG database client/connection setup
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
@@ -44,17 +45,17 @@ app.use(express.static("public"));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
-const widgetsRoutes = require("./routes/widgets");
 const quizzesRoutes = require("./routes/quizzes");
-const loginRoutes = require("./routes/user_validation");
+const loginRoutes = require("./routes/login");
+const logoutRoutes = require("./routes/logout");
 const { Router } = require("express");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
+app.use("/users", usersRoutes(db));
 app.use("/", quizzesRoutes(db));
 app.use("/login", loginRoutes(db));
+app.use("/logout", logoutRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -62,19 +63,41 @@ app.use("/login", loginRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  db.query(`SELECT * FROM quizzes WHERE privacy = FALSE;`)
-    .then((data) => {
-      const quizzes = data.rows;
-      res.render("index", { quizzes }); // quizzes is an array containing quiz objects old to new
-    })
-    .catch((err) => {
-      res.status(500).json({ error: err.message });
-    });
-});
-
-app.post("/", (req, res) => {
-  console.log(req.body);
-  res.redirect("/");
+  if (req.session.userid){
+    console.log("hellooooo")
+    db.query(`SELECT * FROM quizzes WHERE privacy = FALSE;`)
+      .then((data) => {
+        const quizzes = data.rows;
+        const templateVars = {
+          quizzes: data.rows,
+          userInfo: null
+        }
+        db.query(`SELECT * FROM users WHERE users.id = ${req.session.userid};`)
+          .then ((data) => {
+            templateVars.userInfo = data.rows[0]
+            res.render("index", templateVars); // quizzes is an array containing quiz objects old to new
+          })
+          .catch((err) => {
+            res.status(500).json({ error: err.message });
+          });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  } else {
+    db.query(`SELECT * FROM quizzes WHERE privacy = FALSE;`)
+      .then((data) => {
+        const quizzes = data.rows;
+        const templateVars = {
+          quizzes: data.rows,
+          userInfo: null
+        }
+        res.render("index", templateVars); // quizzes is an array containing quiz objects old to new
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  }
 });
 
 app.listen(PORT, () => {

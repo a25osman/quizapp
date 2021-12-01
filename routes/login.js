@@ -14,21 +14,19 @@ module.exports = (db) => {
     let userid;
     db.query(`
     SELECT * FROM users
-    WHERE users.email = $1 AND users.password = $2;
-    `, [email, hashedPassword])
+    WHERE users.email = $1;
+    `, [email])
     .then((data) => {
-      userid = data.rows[0].id
-      req.session.userid = userid;
+      if (bcrypt.compareSync(password, data.rows[0].password)) {
+        userid = data.rows[0].id
+        req.session.userid = userid;
+        res.redirect('/');
+      }
     })
     .catch((err) => {
       res.send('Incorrect Username and/or Password!')
     });  
   })
-
-  router.post("/logout",(req, res) => {
-    req.session = null;
-    res.redirect("/");
-  });
 
   return router;
 };
