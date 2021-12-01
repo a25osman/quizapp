@@ -5,19 +5,19 @@ const createElement = function (questionNumber) {
         <div class= "question question-${questionNumber}">
 
         <label for="question">Question #${1 + questionNumber}</label>
-        <input type="text" name="question${questionNumber}[]" />
+        <input type="text" name="question${questionNumber}[]" required/>
         <br />
         <label for="question">Option A</label>
-        <input type="text" name="choices${questionNumber}[]" />
+        <input type="text" name="choices${questionNumber}[]" required/>
         <br />
         <label for="question">Option B</label>
-        <input type="text" name="choices${questionNumber}[]" />
+        <input type="text" name="choices${questionNumber}[]" required/>
         <br />
         <label for="question">Option C</label>
-        <input type="text" name="choices${questionNumber}[]" />
+        <input type="text" name="choices${questionNumber}[]" required/>
         <br />
         <label for="question">Option D</label>
-        <input type="text" name="choices${questionNumber}[]" />
+        <input type="text" name="choices${questionNumber}[]" required/>
         <br />
         <label for="options">Choose the correct answer:</label>
         <select name="answer_index${questionNumber}[]" id="correct-ans">
@@ -60,5 +60,12 @@ $(document).ready(function () {
       });
       return false;
     });
+  });
+  $(".postquiz").on("click", function (e) {
+    var x = document.forms["myForm"]["fname"].value;
+    if (x == "") {
+      alert("Name must be filled out");
+      return false;
+    }
   });
 });
