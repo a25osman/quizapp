@@ -2,28 +2,6 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = (db) => {
-  // GET /quiz/:quiz_id
-  router.get("/quiz/:quiz_id", (req, res) => {
-    db.query(
-      `
-    SELECT privacy, title, questions.id, questions.content, answers.id, answers.content
-    FROM quizzes
-    JOIN questions ON quizzes.id = quiz_id
-    JOIN answers ON questions.id = question_id
-    WHERE quizzes.id = $1
-    ;`,
-      [req.params.quiz_id]
-    )
-      .then((data) => {
-        const quiz = data.rows[0];
-        let templateVars = { quiz };
-        res.render("quiz_show", templateVars); // quiz is an object containing quiz questions and answers
-      })
-      .catch((err) => {
-        res.status(500).json({ error: err.message });
-      });
-  });
-
   // GET /new
   router.get("/new", (req, res) => {
     if (req.session.userid){
@@ -61,8 +39,8 @@ module.exports = (db) => {
         quizID = data.rows[0].id;
         for (let i = 0; i < numberOfQuestions; i++) {
           let str_question = `question${i}`;
-          let str_answer = `answer${i}`;
-          let str_options = `options${i}`;
+          let str_answer = `choices${i}`;
+          let str_options = `answer_index${i}`;
           let questionID;
           db.query(
             `INSERT INTO questions (quiz_id, content) VALUES ($1, $2) RETURNING *;`,
