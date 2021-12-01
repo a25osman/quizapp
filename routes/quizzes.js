@@ -26,22 +26,24 @@ module.exports = (db) => {
 
   // GET /new
   router.get("/new", (req, res) => {
-    // if (req.session.userid){
-    //   db.query(`SELECT * FROM users WHERE id = $1;`, [req.session.userid])
-    //   .then(data => {
-    //     const user = data.rows[0];
-    //     let templateVars = {user};
-    //     res.render("quizzes_new", templateVars); // user is an object which contains user info
-    //   })
-    //   .catch(err => console.log(err));
-    // } else {
-    //   res.redirect("/login")
-    // }
-    res.render("quizzes_new");
+    if (req.session.userid){
+      db.query(`SELECT * FROM users WHERE id = $1;`, [req.session.userid])
+      .then(data => {
+        let templateVars = {userInfo: data.rows[0]};
+        res.render("quizzes_new", templateVars); // user is an object which contains user info
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+    } else {
+      
+      res.redirect("/")
+    }
   });
 
   // POST /quizzes/
   router.post("/new", (req, res) => {
+    console.log(req.body)
     // let userId = req.session.userId;
     let numberOfQuestions = (Object.keys(req.body).length - 1) / 3;
     let userID = 1;
