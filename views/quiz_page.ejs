@@ -40,7 +40,7 @@
     <h1><%=quiz[0].title %></h1>
     <main class="quizattempt-container">
       <section class="newquiz">
-        <form id="myform" action="/quiz/<%= quiz.quiz_id %>" method="POST">
+        <form id="myform" action="/quiz/<%= quiz[0].quiz_id %>" method="POST">
           <% quiz.forEach(element => { %>
 
           <ul>
@@ -73,11 +73,11 @@
             </li>
           </ul>
           <label for="options">Choose the correct answer:</label>
-          <select name="answer_index${questionNumber}[]" id="correct-ans">
-            <option value="0"><%= element.option[0] %></option>
-            <option value="1"><%= element.option[1] %></option>
-            <option value="2"><%= element.option[2] %></option>
-            <option value="3"><%= element.option[3] %></option>
+          <select name="answers_index" id="correct-ans">
+            <option value="<%=element.ans_id[0]  %>">A</option>
+            <option value="<%=element.ans_id[1]  %>">B</option>
+            <option value="<%=element.ans_id[2]  %>">C</option>
+            <option value="<%=element.ans_id[3]  %>">D</option>
           </select>
 
           <% }) %>
