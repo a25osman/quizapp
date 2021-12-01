@@ -1,20 +1,23 @@
 <header>
+
+  <!--- External CSS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code&display=swap" rel="stylesheet">
+
   <nav class="navbar navbar-expand-md navbar-dark bg-success">
     <a class="navbar-brand" href="/">QuizApp</a>
 
     <% if (!userInfo) { %>
     <div class="logindiv">
-      <form action="/login" method="POST">
-        <label>Please log in Here:</label>
-        <div>
+      <form class ="login" action="/login" method="POST">
           <label for="email">Enter Email:</label>
-          <input type="email" name="email" style="margin: 1em" />
-        </div>
-        <div>
+          <input type="email" name="email"  />
+
           <label for="password">Enter Password:</label>
-          <input type="password" name="password" style="margin: 1em" />
-        </div>
-        <button type="submit" class="btn btn-primary" style="margin: 1em">
+          <input type="password" name="password"  />
+
+        <button type="submit" class="btn btn-primary" >
           Login
         </button>
       </form>
@@ -24,8 +27,12 @@
 
     <!-- Creating logout field and button -->
     <% if (userInfo) { %>
+<<<<<<< HEAD
+    <form  action="/logout" method="POST">
+=======
     <form action="/logout" method="POST">
 
+>>>>>>> aee354da1a4f3e6cefcd4fbd4772e53b1297bbc0
       <Label>Logged In As: <a class = username href="/users/creator/<%= userInfo.id %>"><%= userInfo["name"] %>!</a></Label>
 
       <button type="submit" class="btn btn-primary" style="margin: 1em">
