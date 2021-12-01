@@ -46,7 +46,10 @@ module.exports = (db) => {
     let numberOfQuestions = (Object.keys(req.body).length - 1) / 3;
     let userID = 1;
     let quizID;
-    db.query(`INSERT INTO quizzes (user_id, title) VALUES ($1, $2) RETURNING *;`, [userID, req.body.title])
+    db.query(
+      `INSERT INTO quizzes (user_id, title) VALUES ($1, $2) RETURNING *;`,
+      [userID, req.body.title]
+    )
       .then((data) => {
         quizID = data.rows[0].id;
         for (let i = 0; i < numberOfQuestions; i++) {
@@ -54,7 +57,10 @@ module.exports = (db) => {
           let str_answer = `answer${i}`;
           let str_options = `options${i}`;
           let questionID;
-          db.query(`INSERT INTO questions (quiz_id, content) VALUES ($1, $2) RETURNING *;`, [quizID, req.body[str_question][0]])
+          db.query(
+            `INSERT INTO questions (quiz_id, content) VALUES ($1, $2) RETURNING *;`,
+            [quizID, req.body[str_question][0]]
+          )
             .then((data) => {
               questionID = data.rows[0].id;
               for (let j in req.body[str_answer]) {
@@ -63,14 +69,14 @@ module.exports = (db) => {
                     `INSERT INTO answers (question_id, content, is_correct) VALUES ($1, $2, true) RETURNING *;`,
                     [questionID, req.body[str_answer][j]]
                   )
-                    .then(res.redirect('/'))
+                    .then(res.redirect("/"))
                     .catch((err) => console.log(err.message));
                 } else {
                   db.query(
                     `INSERT INTO answers (question_id, content) VALUES ($1, $2) RETURNING *;`,
                     [questionID, req.body[str_answer][j]]
                   )
-                    .then(res.redirect('/'))
+                    .then(res.redirect("/"))
                     .catch((err) => console.log(err.message));
                 }
               }

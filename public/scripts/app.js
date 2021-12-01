@@ -1,13 +1,8 @@
 // Client facing scripts here
-$(document).ready(function () {
-  let counter = 0;
-  $(".addquestion").on("click", function () {
-    const questionNumber = $(".question").length;
 
-    counter++;
-
-    $("#myform").append(`
-        <div class="mainquestion${questionNumber}">
+const createElement = function (questionNumber) {
+  return `
+        <div class= "question question-${questionNumber}">
 
         <label for="question">Question #${1 + questionNumber}</label>
         <input type="text" name="question${questionNumber}[]" />
@@ -31,10 +26,36 @@ $(document).ready(function () {
           <option value="2">Option C</option>
           <option value="3">Option D</option>
         </select>
-      </div>`);
+<button class="deletequestion">Remove Question</button>
+      </div>
+      `;
+};
 
-    $(".deletequestion").on("click", function () {
-      $(`.mainquestion${questionNumber}`).remove();
+$(document).ready(function () {
+  const deletequestion = ".deletequestion";
+  $(".addquestion").on("click", function () {
+    const questionNumber = $(".question").length;
+
+    $("#myform").append(createElement(questionNumber));
+
+    $(".deletequestion").on("click", function (e) {
+      e.preventDefault();
+
+      e.target.parentElement.remove();
+      $(".question").each((i, element) => {
+        console.log(element, i);
+        element.setAttribute("class", `question question-${i}`);
+        element.firstElementChild.innerText = `Question #${1 + i}`;
+        element.children[1].name = `question${i}[]`;
+        element.children[4].name = `answer${i}[]`;
+        element.children[7].name = `answer${i}[]`;
+        element.children[10].name = `answer${i}[]`;
+        element.children[13].name = `answer${i}[]`;
+        element.children[16].name = `answer${i}[]`;
+      });
+      return false;
     });
   });
+
+  $(".privorpub").hidden();
 });

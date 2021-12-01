@@ -68,20 +68,38 @@
               <option value="3">Option D</option>
             </select>
           </div> -->
+          <div class="privorpub">
+            <p>
+              Please choose if you would like your quiz to be private or public:
+            </p>
+             
+            <input
+              type="radio"
+              id="public"
+              name="privateorpublic"
+              value="Public"
+            />
+            <label for="html">Public</label><br />
+            <input
+              type="radio"
+              id="private"
+              name="privateorpublic"
+              value="Private"
+            />
+              <label for="private">Private</label><br />
+          </div>
         </form>
       </section>
     </main>
 
     <button class="addquestion">Add Question</button>
-    <button class="deletequestion">Remove Question</button>
+    <!-- <button class="deletequestion">Remove Question</button> -->
 
-    <form action="/">
-      <p>Please choose if you would like your quiz to be private or public:</p>
-        <input type="radio" id="public" name="post_public" value="Public" />
-      <label for="html">Public</label><br />
-      <input type="radio" id="private" name="post_private" value="Private" />
-        <label for="private">Private</label><br />
-    </form>
+    <!-- <p>Please choose if you would like your quiz to be private or public:</p>
+      <input type="radio" id="public" name="privateorpublic" value="Public" />
+    <label for="html">Public</label><br />
+    <input type="radio" id="private" name="privateorpublic" value="Private" />
+      <label for="private">Private</label><br /> -->
 
     <button type="submit" form="myform" class="postquiz">Post Quiz</button>
   </body>
