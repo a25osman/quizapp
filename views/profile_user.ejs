@@ -41,7 +41,7 @@
         <p><a href="views/register.html">Register</a></p>
       </div>
     </nav> -->
-    <main>
+    <main class="indexmain">
       <table class="table">
         <thead>
           <tr>
@@ -50,7 +50,7 @@
             <th scope="col">Set Privacy status</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="home_table">
           <% for (let quiz of quizzes) { %>
           <tr>
             <td><%= quiz.title %></td>
@@ -58,12 +58,7 @@
             <td>
               <!-- Start Button -->
               <form method="GET" action="/quiz/<%= quiz.id %>">
-                <button
-                  style="
-                    border: 1px solid blue;
-                    color: blue;
-                    background-color: transparent;
-                  "
+                <button class="user_profile_start"
                   type="submit"
                 >
                   Start!
@@ -78,14 +73,8 @@
                   <option value="1">Private</option>
                   <option value="2">Public</option>
                 </select>
-                <button
-                  style="
-                    border: 1px solid red;
-                    color: red;
-                    background-color: transparent;
-                    border-radius: 15px;
-                    box-shadow: 0 9px #999;
-                  "
+                <button class="go_button"
+
                   type="submit"
                 >
                   Go!

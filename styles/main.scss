@@ -56,7 +56,7 @@ table td {
 }
 table th {
   width: 3em;
-  border: 3px solid black;
+  border: 2px solid black;
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
@@ -146,4 +146,20 @@ table th {
 
 .table:hover {
   box-shadow: 7px 7px 5px rgb(79, 77, 77);
+}
+
+.user_profile_start{
+  background-color: #3c8ac9;
+  border: 1px solid #3c8ac9;
+  border-radius: 3px;
+  color: white;
+  box-shadow: 1px 1px black;
+}
+
+.go_button{
+  border: 1px solid red;
+  background-color: crimson;
+  color: white;
+  border-radius: 15px;
+  box-shadow: 1px 1px black;
 }
