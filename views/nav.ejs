@@ -1,25 +1,25 @@
 <header>
-
   <!--- External CSS -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code&display=swap"
+    rel="stylesheet"
+  />
 
   <nav class="navbar navbar-expand-md navbar-dark bg-success">
     <a class="navbar-brand" href="/">QuizApp</a>
 
     <% if (!userInfo) { %>
     <div class="logindiv">
-      <form class ="login" action="/login" method="POST">
-          <label for="email">Enter Email:</label>
-          <input type="email" name="email"  />
+      <form class="login" action="/login" method="POST">
+        <label for="email">Enter Email:</label>
+        <input type="email" name="email" />
 
-          <label for="password">Enter Password:</label>
-          <input type="password" name="password"  />
+        <label for="password">Enter Password:</label>
+        <input type="password" name="password" />
 
-        <button type="submit" class="btn btn-primary" >
-          Login
-        </button>
+        <button type="submit" class="btn btn-primary">Login</button>
       </form>
     </div>
     <% } %>
@@ -27,8 +27,15 @@
 
     <!-- Creating logout field and button -->
     <% if (userInfo) { %>
-    <form  action="/logout" method="POST">
-      <Label>Logged In As: <a class = username href="/users/creator/<%= userInfo.id %>"><%= userInfo["name"] %>!</a></Label>
+    <form action="/logout" method="POST">
+      <Label
+        >Logged In As:
+        <a class="username" href="/users/creator/<%= userInfo.id %>"
+          ><%= userInfo["name"] %>!</a
+        ></Label
+      >
+      <br />
+      <label><a href="/new">Create Quiz</a></label>
       <button type="submit" class="btn btn-primary" style="margin: 1em">
         Logout
       </button>
