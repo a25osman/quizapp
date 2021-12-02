@@ -49,20 +49,15 @@
             <th scope="col" class="starttable">Start Quiz</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="home_table">
           <% for (let quiz of quizzes) { %>
           <tr>
             <td><%= quiz.title %></td>
 
             <td>
               <!-- Start Button -->
-              <form method="GET" action="/quiz/<%= quiz.id %>">
+              <form class="start" method="GET" action="/quiz/<%= quiz.id %>">
                 <button
-                  style="
-                    border: 1px solid blue;
-                    color: blue;
-                    background-color: transparent;
-                  "
                   type="submit"
                 >
                   Start!
