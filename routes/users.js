@@ -52,7 +52,8 @@ module.exports = (db) => {
           correct: data.rows.reverse()[0].correct,
           total: data.rows.reverse()[0].total,
           title: data.rows.reverse()[0].title,
-          userInfo: null
+          userInfo: null,
+          quiz_id: req.params.quiz_id
         };
         // console.log(templateVars.correct, templateVars.total);
         res.render("profile_user_result", templateVars);
