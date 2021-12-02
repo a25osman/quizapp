@@ -1,0 +1,24 @@
+.quiz_header {
+  border-bottom: 1px solid black;
+}
+
+
+.option {
+  margin-top: 0.5em;
+}
+
+
+.quiz_submit_button{
+  background-color: #3c8ac9;
+  border: 1px solid #3c8ac9;
+  padding: 10px;
+  border-radius: 3px;
+  color: white;
+  box-shadow: 1px 1px black;
+}
+
+.quiz_submit_button:hover{
+  cursor: pointer;
+  box-shadow: 2px 2px 4px black;
+}
+
