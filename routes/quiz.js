@@ -54,7 +54,31 @@ module.exports = (db) => {
   });
 
   router.post("/:quiz_id", (req, res) => {
-    console.log(req.body);
+    let numQuestions = req.body.answers_index.length;
+    let correct = 0;
+    for (let anskey of req.body.answers_index){
+      db.query(`SELECT id FROM answers;`)
+        .then((data) => {
+          // console.log(data.rows)
+          // console.log(anskey)
+          for (let i in data.rows) {
+            if(data.rows[i].id == anskey) {
+              correct ++;
+            }
+          }
+        })
+        .catch((err) => console.log(err.message));
+    }
+    let quizid = req.params.quiz_id;
+    let userid = req.session.userid;
+    db.query(`
+      INSERT INTO attempts (user_id, quiz_id, correct, total) 
+      VALUES ($1, $2, $3, $4)
+      ;`, [userid, quizid, correct, numQuestions]
+    )
+      // .then((data) => res.redirect(''))
+      .catch((err) => console.log(err.message));
+    console.log(`you had ${correct} correct answers out of ${numQuestions} Questions`)
   })
 
   return router;
