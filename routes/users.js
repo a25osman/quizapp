@@ -26,13 +26,35 @@ module.exports = (db) => {
     });
   });
 
-  router.get("/:user_id", (req, res) => {
-
-  });
 
   // GET /users/:user_id/:quiz_id  --> Quiz Result Page
   router.get("/:user_id/:quiz_id", (req, res) => {
-
+  
+    db.query(`
+      SELECT * FROM attempts WHERE user_id = $1 AND quiz_id = $2
+      ;`, [req.params.user_id, req.params.quiz_id])
+    .then(data => {
+      if (req.session.user) {
+        let templateVars = {
+          correct: data.rows.reverse()[0].correct,
+          total: data.rows.reverse()[0].total,
+          userInfo: req.session.user
+        };
+        // console.log(templateVars.correct, templateVars.total);
+        res.render("profile_user_result", templateVars);
+      } else {
+        let templateVars = {
+          correct: data.rows.reverse()[0].correct,
+          total: data.rows.reverse()[0].total,
+          userInfo: null
+        };
+        // console.log(templateVars.correct, templateVars.total);
+        res.render("profile_user_result", templateVars);
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
   });
 
 
