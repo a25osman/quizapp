@@ -47,7 +47,7 @@
           <tr>
             <th scope="col">Quiz Title</th>
             <th scope="col">Start Quiz</th>
-            <th scope="col">Delete Quiz</th>
+            <th scope="col">Select Privacy status</th>
           </tr>
         </thead>
         <tbody>
@@ -73,20 +73,26 @@
 
             <td>
               <!-- Share Button -->
-              <form method="POST" action="/quiz/<%= quiz.id %>/delete">
+              <form method="POST" action="/status">
+                <select name="publicorprivate" id="correct-ans">
+                  <option value="0" selected="selected">Select option</option>
+                  <option value="1">Private</option>
+                  <option value="2">Public</option>
+                </select>
                 <button
                   style="
                     border: 1px solid red;
                     color: red;
                     background-color: transparent;
+                    border-radius: 15px;
+                    box-shadow: 0 9px #999;
                   "
                   type="submit"
                 >
-                  Delete!
+                  Go!
                 </button>
               </form>
             </td>
-
           </tr>
           <% } %>
         </tbody>
