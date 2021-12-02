@@ -54,7 +54,7 @@
           <% for (let quiz of quizzes) { %>
           <tr>
             <td><%= quiz.title %></td>
-            
+
             <td>
               <!-- Start Button -->
               <form method="GET" action="/quiz/<%= quiz.id %>">
@@ -82,11 +82,10 @@
                   "
                   type="submit"
                 >
-                  Delete!
+                  Share
                 </button>
               </form>
             </td>
-            
           </tr>
           <% } %>
         </tbody>
