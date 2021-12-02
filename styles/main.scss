@@ -47,7 +47,7 @@ h1 {
 
 table {
   border-collapse: collapse;
-  width: 30%;
+  width: 60%;
 }
 
 .starttable {
@@ -82,4 +82,70 @@ table th {
 .login input {
   padding: 0em;
   margin: 0 0.7em 0;
+}
+
+.start button {
+  border: none;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    padding: 0.5em 2em;
+    background-color: #04aa6d;
+    box-shadow: 1px 1px 1px black;
+}
+
+.start button:before {
+  content: '';
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left:-2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+}
+
+.start button:active {
+  color: rgb(247, 243, 243)
+}
+
+.start button:active:after {
+  background: transparent;
+}
+
+.start button:hover:before {
+  opacity: 1;
+}
+
+.start button:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+.table th, .home_table td {
+  text-align: center;
+}
+
+.table:hover {
+  box-shadow: 7px 7px 5px rgb(79, 77, 77);
 }
