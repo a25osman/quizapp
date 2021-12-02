@@ -55,38 +55,43 @@ module.exports = (db) => {
   });
 
   router.post("/:quiz_id", (req, res) => {
+    if (typeof req.body.answers_index === "string") {
+      req.body.answers_index = [req.body.answers_index];
+    }
     let numQuestions = req.body.answers_index.length;
-    let correct = 0;
+    console.log(req.body);
+    let numCorrect = 0;
     let quizid = req.params.quiz_id;
     let userid = req.session.userid;
-    for (let anskey of req.body.answers_index) {
-      db.query(`SELECT id FROM answers;`)
+
+    for (let i in req.body.answers_index) {
+      db.query(`SELECT id FROM answers WHERE is_correct = TRUE;`)
         .then((data) => {
-          // console.log(data.rows)
-          // console.log(anskey)
-          for (let i in data.rows) {
-            if (data.rows[i].id == anskey) {
-              correct++;
+          for (let j in data.rows) {
+            if (data.rows[j].id == req.body.answers_index[i]) {
+              numCorrect++;
             }
+          }
+
+          if (Number(i) === req.body.answers_index.length - 1) {
+            db.query(
+              `
+            INSERT INTO attempts (user_id, quiz_id, correct, total)
+            VALUES ($1, $2, $3, $4)
+            ;`,
+              [userid, quizid, numCorrect, numQuestions]
+            )
+              .then((data) => {
+                console.log(
+                  `you had ${numCorrect} correct answers out of ${numQuestions} Questions`
+                );
+                res.redirect(`/users/${userid}/${quizid}`);
+              })
+              .catch((err) => console.log(err.message));
           }
         })
         .catch((err) => console.log(err.message));
     }
-
-    setTimeout(() => {
-      db.query(
-        `
-      INSERT INTO attempts (user_id, quiz_id, correct, total)
-      VALUES ($1, $2, $3, $4)
-      ;`,
-        [userid, quizid, correct, numQuestions]
-      )
-        // .then((data) => res.redirect(''))
-        .catch((err) => console.log(err.message));
-      console.log(
-        `you had ${correct} correct answers out of ${numQuestions} Questions`
-      );
-    }, 5000);
   });
 
   return router;
