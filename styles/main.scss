@@ -1,6 +1,6 @@
 nav {
   color: #ffff;
-  background-color: 	#4ed4ac;
+  background-color: #4ed4ac;
   height: auto;
   width: 100%;
   top: 0;
@@ -33,18 +33,24 @@ h1 {
 }
 
 .quiz-container {
-  border: solid 2px #1F6521;
+  border: solid 2px #1f6521;
   margin: 2em;
-  color: #1F6521;
+  color: #1f6521;
 }
 
 main {
   margin: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 table {
   border-collapse: collapse;
-  width: 100%;
+  width: 30%;
+}
+
+.starttable {
 }
 
 table td {
@@ -52,6 +58,7 @@ table td {
   padding: 8px;
 }
 table th {
+  width: 3em;
   border: 3px solid black;
   padding-top: 12px;
   padding-bottom: 12px;
@@ -63,9 +70,8 @@ table th {
 .navbar-brand {
   display: flex;
   align-items: center;
-  font-family: 'M PLUS 1 Code', sans-serif;
+  font-family: "M PLUS 1 Code", sans-serif;
   font-size: 40px;
-
 }
 
 .login {
@@ -77,5 +83,3 @@ table th {
   padding: 0em;
   margin: 0 0.7em 0;
 }
-
-
