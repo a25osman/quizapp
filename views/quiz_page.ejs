@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/quiz.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/createquiz.css" type="text/css" />
 
@@ -37,7 +38,7 @@
 
   <body>
     <%- include('nav') %>
-    <h1><%=quiz[0].title %></h1>
+    <h1 class="quiz_header"><%=quiz[0].title %></h1>
     <main class="quizattempt-container">
       <section class="newquiz">
         <form id="myform" action="/quiz/<%= quiz[0].quiz_id %>" method="POST">
@@ -47,25 +48,25 @@
             <li>
               <h3><%= element.question %></h3>
 
-              <div>
+              <div class="option">
                 <label for="question-1-answers-A"
                   >A) <%= element.option[0] %>
                 </label>
               </div>
 
-              <div>
+              <div class="option">
                 <label for="question-1-answers-B"
                   >B) <%= element.option[1] %></label
                 >
               </div>
 
-              <div>
+              <div class="option">
                 <label for="question-1-answers-C"
                   >C) <%= element.option[2] %></label
                 >
               </div>
 
-              <div>
+              <div class="option">
                 <label for="question-1-answers-D"
                   >D) <%= element.option[3] %></label
                 >
@@ -82,7 +83,7 @@
 
           <% }) %>
           <br />
-          <input type="submit" value="Submit Quiz" />
+          <input class="quiz_submit_button" type="submit" value="Submit Quiz" />
         </form>
       </section>
     </main>
