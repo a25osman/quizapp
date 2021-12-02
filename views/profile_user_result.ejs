@@ -10,17 +10,20 @@
     <link rel="stylesheet" href="/styles/main.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/createquiz.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/results.css" type="text/css" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
   <body>
     <%- include('nav') %>
+    <div class="result_body">
     <h1 class="display-1"><%= title%> Quiz</h1>
-    <h2 style="text-decoration: underline; text-align: center">Results:</h2>
-    <h2 style="text-align: center">
+    <h2 class="display-1" style="text-decoration: underline; text-align: center">Results:</h2>
+    <h2 class="display-1" style="text-align: center">
       <%= correct%> answer correct out of <%= total%> total questions
     </h2>
-    <h2 style="text-align: center"><%= correct/total * 100 %>%</h2>
+    <h2 class="display-1" style="text-align: center"><%= correct/total * 100 %>%</h2>
+    </div>
   </body>
 </html>
