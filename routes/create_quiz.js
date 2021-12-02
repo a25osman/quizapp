@@ -20,10 +20,25 @@ module.exports = (db) => {
   });
 
   // POST /quizzes/
-  router.post("/new", (req, res) => {
+  router.post("/new", async (req, res) => {
     console.log(req.body)
-    let userid = req.session.userid;
     let numberOfQuestions = (Object.keys(req.body).length - 2) / 3;
+
+    for (let i = 0; i < numberOfQuestions; i++) {
+      let str_booleans = `answer_index${i}`;
+      let index = req.body[str_booleans][0];
+      req.body[str_booleans] = [];
+      for (let j = 0; j < 4; j++) {
+        if (j == index) {
+          req.body[str_booleans].push(true)
+        } else {
+          req.body[str_booleans].push(false)          
+        }
+      }
+    }
+    console.log(`req.body new------`, req.body)
+
+    let userid = req.session.userid;
     let quizID;
     let privacy = req.body.privateorpublic;
     if (privacy === "Private") {
@@ -31,45 +46,48 @@ module.exports = (db) => {
     } else {
       privacy = false;
     }
-    db.query(
-      `INSERT INTO quizzes (user_id, title, privacy) VALUES ($1, $2, $3) RETURNING *;`,
-      [userid, req.body.title, privacy]
-    )
-      .then((data) => {
-        quizID = data.rows[0].id;
-        for (let i = 0; i < numberOfQuestions; i++) {
-          let str_question = `question${i}`;
-          let str_answer = `choices${i}`;
-          let str_options = `answer_index${i}`;
-          let questionID;
-          db.query(
+
+
+    // start of query
+    let data
+    try {
+      data = await db.query(
+        `INSERT INTO quizzes (user_id, title, privacy) VALUES ($1, $2, $3) RETURNING *;`,
+        [userid, req.body.title, privacy]
+      )
+    } catch(err) {
+      console.log(err)
+    }
+    
+      
+      quizID = data.rows[0].id;
+      for (let i = 0; i < numberOfQuestions; i++) {
+        let str_question = `question${i}`;
+        let str_choices = `choices${i}`;
+        let str_booleans = `answer_index${i}`;
+        let questionID;
+        try {
+          const info = await db.query(
             `INSERT INTO questions (quiz_id, content) VALUES ($1, $2) RETURNING *;`,
             [quizID, req.body[str_question][0]]
-          )
-            .then((data) => {
-              questionID = data.rows[0].id;
-              for (let j in req.body[str_answer]) {
-                if (j === req.body[str_options][0]) {
-                  db.query(
-                    `INSERT INTO answers (question_id, content, is_correct) VALUES ($1, $2, true) RETURNING *;`,
-                    [questionID, req.body[str_answer][j]]
-                  )
-                    .then()
-                    .catch((err) => console.log(err.message));
-                } else {
-                  db.query(
-                    `INSERT INTO answers (question_id, content) VALUES ($1, $2) RETURNING *;`,
-                    [questionID, req.body[str_answer][j]]
-                  )
-                    .then()
-                    .catch((err) => console.log(err.message));
-                }
-              }
-            })
-            .catch((err) => console.log(err.message));
+            )
+          questionID = info.rows[0].id;
+        } catch (err) {
+          console.log(err)
         }
-      })
-      .catch((err) => console.log(err.message));
+
+        for (let j in req.body[str_choices]) {
+          try {
+            await db.query(
+              `INSERT INTO answers (question_id, content, is_correct) VALUES ($1, $2, $3) RETURNING *
+              ;`, [questionID, req.body[str_choices][j], req.body[str_booleans][j]])
+          } catch (err) {
+            console.log(err)
+          }
+        }
+          
+      }    
+
     res.redirect("/");
   });
 
