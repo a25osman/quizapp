@@ -18,12 +18,26 @@
   <body>
     <%- include('nav') %>
     <div class="result_body">
-    <h1 class="display-1"><%= title%> Quiz</h1>
-    <h2 class="display-1" style="text-decoration: underline; text-align: center">Results:</h2>
-    <h2 class="display-1" style="text-align: center">
-      <%= correct%> answer correct out of <%= total%> total questions
-    </h2>
-    <h2 class="display-1" style="text-align: center"><%= correct/total * 100 %>%</h2>
+      <h1 class="display-1"><%= title%> Quiz</h1>
+      <h2
+        class="display-1"
+        style="text-decoration: underline; text-align: center"
+      >
+        Results:
+      </h2>
+      <h2 class="display-1" style="text-align: center">
+        <%= correct%> answer correct out of <%= total%> total questions
+      </h2>
+      <h2 class="display-1" style="text-align: center">
+        <%= correct/total * 100 %>%
+      </h2>
+      <div style="display: flex; justify-content: center;">
+      <a href= <%-`mailto:?subject=Here%20is%20a%20link%20to%20the%20results%20site&amp;body=Check%20them%20out%20http://localhost:8080/users/${userInfo.id}/${quiz_id}`%>
+        title="Share by Email" >
+        <img src="http://png-2.findicons.com/files/icons/573/must_have/48/mail.png">
+      </a>
+      </div>
     </div>
   </body>
 </html>
+
