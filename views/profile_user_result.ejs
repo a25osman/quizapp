@@ -33,10 +33,12 @@
         <%= correct/total * 100 %>%
       </h2>
       <div style="display: flex; justify-content: center;">
+        <% if (userInfo) { %>
       <a href= <%-`mailto:?subject=Here%20is%20a%20link%20to%20the%20results%20site&amp;body=Check%20them%20out%20http://localhost:8080/users/${userInfo.id}/${quiz_id}`%>
         title="Share by Email" >
         <button class="shareresults" >Share Results</button>
       </a>
+      <% } %>
       </div>
     </div>
   </body>
