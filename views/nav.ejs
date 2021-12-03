@@ -7,8 +7,8 @@
     rel="stylesheet"
   />
 
-  <nav class="navbar navbar-expand-md navbar-dark bg-success">
-    <a class="navbar-brand" href="/">QuizApp</a>
+  <nav class="">
+    <a class="navbar-brand" id="increasefont" href="/">QuizApp</a>
 
     <% if (!userInfo) { %>
     <div class="logindiv">
@@ -35,7 +35,9 @@
         ></Label
       >
       <br />
-      <button class="glitch" role="button"><a class="hyper" href="/new">Create Quiz</a></button>
+      <button class="glitch" role="button">
+        <a class="hyper" href="/new">Create Quiz</a>
+      </button>
       <button type="submit" class="logout_button" style="margin: 1em">
         Logout
       </button>
