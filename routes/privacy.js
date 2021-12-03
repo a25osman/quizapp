@@ -3,7 +3,12 @@ const router = express.Router();
 
 module.exports = (db) => {
   // POST /status/
-  router.post("/", (req, res) => {
+  router.post("/:user_id", (req, res) => {
+    if (!req.session.userid){
+      return res.redirect("/");
+    } else if (req.session.userid != req.params.user_id) { 
+      return res.redirect("/");
+    }
     let num = Number(req.body.privacy_status);
     let id = 0;
     let privacy = null;

@@ -80,7 +80,7 @@
 
             <td>
               <!-- Private/Public Button -->
-              <form method="POST" action="/status">
+              <form method="POST" action="/status/<%= quiz.user_id %>">
                 <select name="privacy_status" id="correct-ans">
                   <option value="<%= -quiz.id %>">Public</option>
                   <option value="<%= quiz.id %>">Private</option>
@@ -96,10 +96,9 @@
 
             <!-- DELETE Button -->
             <td>
-              <form method="POST" action="/quiz/<%= quiz.id %>/delete">
+              <form method="POST" action="/quiz/<%= quiz.id %>/<%= quiz.user_id %>/delete">
                 <button class="user_profile_delete"
                   type="submit"
-
                 >
                   Delete!
                 </button>

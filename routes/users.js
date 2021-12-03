@@ -14,6 +14,8 @@ module.exports = (db) => {
     const userid = req.session.userid;
     if (!userid){
       return res.redirect("/");
+    } else if (userid != req.params.user_id) { 
+      return res.redirect("/");
     }
 
     db.query(`SELECT * FROM quizzes WHERE user_id = $1 ORDER BY id;`, [userid])

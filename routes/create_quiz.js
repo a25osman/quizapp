@@ -22,6 +22,9 @@ module.exports = (db) => {
   // POST /quizzes/
   router.post("/new", async (req, res) => {
     console.log(req.body)
+    if (!req.session.userid){
+      return res.redirect("/");
+    }
     if (Object.keys(req.body).length === 2) {
       res.redirect(`/new`);
       return;
