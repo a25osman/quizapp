@@ -49,6 +49,7 @@ const newquizRoutes = require("./routes/create_quiz");
 const loginRoutes = require("./routes/login");
 const logoutRoutes = require("./routes/logout");
 const quizRoutes = require("./routes/quiz");
+const privacyRoutes = require("./routes/privacy");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -57,6 +58,7 @@ app.use("/", newquizRoutes(db));
 app.use("/quiz", quizRoutes(db));
 app.use("/login", loginRoutes(db));
 app.use("/logout", logoutRoutes(db));
+app.use("/status", privacyRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -65,12 +67,17 @@ app.use("/logout", logoutRoutes(db));
 
 app.get("/", (req, res) => {
   if (req.session.userid){
-    db.query(`SELECT * FROM quizzes WHERE privacy = FALSE;`)
+    db.query(`
+    SELECT quizzes.*, users.name AS name
+    FROM quizzes
+    JOIN users ON quizzes.user_id = users.id 
+    WHERE privacy = FALSE 
+    ORDER BY quizzes.id
+    ;`)
       .then((data) => {
-        const quizzes = data.rows;
         const templateVars = {
           quizzes: data.rows,
-          userInfo: req.session.user
+          userInfo: req.session.user,
         }
         res.render("index", templateVars); // quizzes is an array containing quiz objects old to new
       })
@@ -78,9 +85,14 @@ app.get("/", (req, res) => {
         res.status(500).json({ error: err.message });
       });
   } else {
-    db.query(`SELECT * FROM quizzes WHERE privacy = FALSE;`)
+    db.query(`
+    SELECT quizzes.*, users.name AS name
+    FROM quizzes
+    JOIN users ON quizzes.user_id = users.id 
+    WHERE privacy = FALSE 
+    ORDER BY quizzes.id
+    ;`)
       .then((data) => {
-        const quizzes = data.rows;
         const templateVars = {
           quizzes: data.rows,
           userInfo: null

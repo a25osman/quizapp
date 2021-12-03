@@ -2,6 +2,21 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = (db) => {
+  // DELETE /quiz/:quiz_id/delete
+  router.post("/:quiz_id/delete", (req, res) => {
+
+    db.query(`
+    DELETE FROM quizzes
+    WHERE id = $1
+    ;`, [req.params.quiz_id])
+    .then((data) => {
+      res.redirect(`/users/creator/${req.session.userid}`);
+    })
+    .catch((err) => {
+      res.redirect(`/`);
+    });
+  })
+
   // GET /quiz/:quiz_id
   router.get("/:quiz_id", (req, res) => {
     db.query(

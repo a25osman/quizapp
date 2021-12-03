@@ -45,9 +45,11 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">Quiz Title</th>
+            <th scope="col">Your Created Quizzes!</th>
             <th scope="col">Start Quiz</th>
-            <th scope="col">Set Privacy status</th>
+            <th scope="col">Current Privacy Status</th>
+            <th scope="col">Set Privacy Status</th>
+            <th scope="col">Delete Quiz</th>
           </tr>
         </thead>
         <tbody class="home_table">
@@ -55,8 +57,8 @@
           <tr>
             <td><%= quiz.title %></td>
 
+            <!-- Start Button -->
             <td>
-              <!-- Start Button -->
               <form method="GET" action="/quiz/<%= quiz.id %>">
                 <button class="user_profile_start"
                   type="submit"
@@ -66,21 +68,45 @@
               </form>
             </td>
 
+
+            <td>
+              <% if (quiz.privacy === true) { %>
+                <p> Private </p>
+                <%} else { %>
+                <p> Public </p>
+                <% } %>
+            </td>
+            
+            
             <td>
               <!-- Private/Public Button -->
               <form method="POST" action="/status">
-                <select name="publicorprivate" id="correct-ans">
-                  <option value="1">Private</option>
-                  <option value="2">Public</option>
+                <select name="privacy_status" id="correct-ans">
+                  <option value="<%= -quiz.id %>">Public</option>
+                  <option value="<%= quiz.id %>">Private</option>
                 </select>
                 <button class="go_button"
 
                   type="submit"
                 >
-                  Go!
+                  Set!
                 </button>
               </form>
             </td>
+
+            <!-- DELETE Button -->
+            <td>
+              <form method="POST" action="/quiz/<%= quiz.id %>/delete">
+                <button class="user_profile_start"
+                  type="submit"
+                  style="border: 1px solid red;   color: crimson;   background-color:transparent;"
+                >
+                  Delete!
+                </button>
+              </form>
+            </td>
+
+
           </tr>
           <% } %>
         </tbody>

@@ -50,6 +50,7 @@
         <thead>
           <tr>
             <th scope="col">Quiz Title</th>
+            <th scope="col">Created By</th>
             <th scope="col" class="starttable">Start Quiz</th>
             <th scope="col">Share Quiz</th>
           </tr>
@@ -58,6 +59,7 @@
           <% for (let quiz of quizzes) { %>
           <tr>
             <td><%= quiz.title %></td>
+            <td><%= quiz.name %></td>
 
             <td>
               <!-- Start Button -->

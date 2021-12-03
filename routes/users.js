@@ -9,14 +9,14 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = (db) => {
-  // GET /users/:user_id
+  // GET /users/creator/:user_id
   router.get("/creator/:user_id", (req, res) => {
     const userid = req.session.userid;
     if (!userid){
       return res.redirect("/");
     }
 
-    db.query(`SELECT * FROM quizzes WHERE user_id = $1;`, [userid])
+    db.query(`SELECT * FROM quizzes WHERE user_id = $1 ORDER BY id;`, [userid])
     .then(data => {
       let templateVars = {quizzes: data.rows, userInfo: req.session.user};
       res.render("profile_user", templateVars);

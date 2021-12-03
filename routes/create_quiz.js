@@ -22,6 +22,10 @@ module.exports = (db) => {
   // POST /quizzes/
   router.post("/new", async (req, res) => {
     console.log(req.body)
+    if (Object.keys(req.body).length === 2) {
+      res.redirect(`/new`);
+      return;
+    }
     let numberOfQuestions = (Object.keys(req.body).length - 2) / 3;
 
     for (let i = 0; i < numberOfQuestions; i++) {
