@@ -3,7 +3,7 @@ const router = express.Router();
 
 module.exports = (db) => {
   // DELETE /quiz/:quiz_id/delete
-  router.post("/:quiz_id/user_id/delete", (req, res) => {
+  router.post("/:quiz_id/:user_id/delete", (req, res) => {
     if (!req.session.userid){
       return res.redirect("/");
     } else if (req.session.userid != req.params.user_id) { 
@@ -23,6 +23,9 @@ module.exports = (db) => {
 
   // GET /quiz/:quiz_id
   router.get("/:quiz_id", (req, res) => {
+    if (!req.session.userid){
+      return res.redirect("/");
+    }
     db.query(
       `
       SELECT title, quizzes.id as quiz_id, questions.id AS question_id, questions.content AS question,

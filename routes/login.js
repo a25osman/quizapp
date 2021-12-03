@@ -22,6 +22,8 @@ module.exports = (db) => {
         req.session.userid = userid;
         req.session.user = data.rows[0];
         res.redirect('/');
+      } else {
+        res.send('Incorrect Username and/or Password!');
       }
     })
     .catch((err) => {
