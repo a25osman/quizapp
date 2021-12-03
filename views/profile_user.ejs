@@ -60,52 +60,40 @@
             <!-- Start Button -->
             <td>
               <form method="GET" action="/quiz/<%= quiz.id %>">
-                <button class="user_profile_start"
-                  type="submit"
-                >
-                  Start!
-                </button>
+                <button class="user_profile_start" type="submit">Start!</button>
               </form>
             </td>
 
-
             <td>
               <% if (quiz.privacy === true) { %>
-                <p> Private </p>
-                <%} else { %>
-                <p> Public </p>
-                <% } %>
+              <p>Private</p>
+              <%} else { %>
+              <p>Public</p>
+              <% } %>
             </td>
-
 
             <td>
               <!-- Private/Public Button -->
               <form method="POST" action="/status/<%= quiz.user_id %>">
                 <select name="privacy_status" id="correct-ans">
-                  <option value="<%= -quiz.id %>">Public</option>
                   <option value="<%= quiz.id %>">Private</option>
+                  <option value="<%= -quiz.id %>">Public</option>
                 </select>
-                <button class="go_button"
-
-                  type="submit"
-                >
-                  Set!
-                </button>
+                <button class="go_button" type="submit">Set!</button>
               </form>
             </td>
 
             <!-- DELETE Button -->
             <td>
-              <form method="POST" action="/quiz/<%= quiz.id %>/<%= quiz.user_id %>/delete">
-                <button class="user_profile_delete"
-                  type="submit"
-                >
+              <form
+                method="POST"
+                action="/quiz/<%= quiz.id %>/<%= quiz.user_id %>/delete"
+              >
+                <button class="user_profile_delete" type="submit">
                   Delete!
                 </button>
               </form>
             </td>
-
-
           </tr>
           <% } %>
         </tbody>
