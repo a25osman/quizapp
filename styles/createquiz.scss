@@ -1,3 +1,6 @@
+$font-stack: Helvetica, sans-serif;
+$primary-color: teal;
+
 section {
   display: flex;
   flex-direction: column;
@@ -20,6 +23,12 @@ select {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+}
+
+.shareresults {
+  font: 100% $font-stack;
+  background-color: $primary-color;
+  padding: 15px 32px;
 }
 
 // input:invalid {
