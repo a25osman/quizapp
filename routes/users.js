@@ -33,31 +33,30 @@ module.exports = (db) => {
   router.get("/:user_id/:quiz_id", (req, res) => {
   
     db.query(`
-      SELECT *, quizzes.title AS title
+      SELECT attempts.*, quizzes.id AS thequizid, quizzes.title AS title
       FROM attempts 
-      JOIN quizzes ON quiz_id = quizzes.id
-      WHERE attempts.user_id = $1 AND quiz_id = $2
+      JOIN quizzes ON attempts.quiz_id = quizzes.id
+      WHERE attempts.user_id = $1 AND attempts.quiz_id = $2
+      ORDER BY attempts.id DESC
       ;`, [req.params.user_id, req.params.quiz_id])
     .then(data => {
       if (req.session.user) {
         let templateVars = {
-          correct: data.rows.reverse()[0].correct,
-          total: data.rows.reverse()[0].total,
-          title: data.rows.reverse()[0].title,
+          correct: data.rows[0].correct,
+          total: data.rows[0].total,
+          title: data.rows[0].title,
           userInfo: req.session.user,
           quiz_id: req.params.quiz_id
         };
-        // console.log(templateVars.correct, templateVars.total);
         res.render("profile_user_result", templateVars);
       } else {
         let templateVars = {
-          correct: data.rows.reverse()[0].correct,
-          total: data.rows.reverse()[0].total,
-          title: data.rows.reverse()[0].title,
+          correct: data.rows[0].correct,
+          total: data.rows[0].total,
+          title: data.rows[0].title,
           userInfo: null,
           quiz_id: req.params.quiz_id
         };
-        // console.log(templateVars.correct, templateVars.total);
         res.render("profile_user_result", templateVars);
       }
     })

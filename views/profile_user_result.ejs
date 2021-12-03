@@ -19,7 +19,7 @@
   <body>
     <%- include('nav') %>
     <div class="result_body">
-      <h1 class="">Quiz: <%= title%></h1>
+      <h1 class="">Title: <%= title%></h1>
       <h2
         class=""
         style="text-decoration: underline; text-align: center"
@@ -30,7 +30,7 @@
         <%= correct%> / <%= total%>
       </h2>
       <h2 class="" style="text-align: center">
-        <%= correct/total * 100 %>%
+        <%= Math.round(correct/total * 100) %>%
       </h2>
       <div style="display: flex; justify-content: center;">
         <% if (userInfo) { %>
