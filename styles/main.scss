@@ -26,20 +26,20 @@ nav {
 }
 body {
   width: 100%;
-  height:100%;
+  height: 100%;
   background: linear-gradient(-45deg, #58caf4, #49bbe4, #3bb3df, #29acdc);
   background-size: 800% 800%;
   animation: gradient 15s ease infinite;
 }
 @keyframes gradient {
   0% {
-      background-position: 0% 50%;
+    background-position: 0% 50%;
   }
   50% {
-      background-position: 100% 50%;
+    background-position: 100% 50%;
   }
   100% {
-      background-position: 0% 50%;
+    background-position: 0% 50%;
   }
 }
 
@@ -83,6 +83,10 @@ table th {
   display: flex;
   align-items: center;
   font-family: "M PLUS 1 Code", sans-serif;
+  font-size: 80px;
+}
+
+#increasefont {
   font-size: 40px;
 }
 
@@ -98,23 +102,34 @@ table th {
 
 .start button {
   border: none;
-    outline: none;
-    color: white;
-    cursor: pointer;
-    position: relative;
-    z-index: 0;
-    border-radius: 10px;
-    padding: 0.5em 2em;
-    background-color: #04aa6d;
-    box-shadow: 1px 1px 1px black;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  padding: 0.5em 2em;
+  background-color: #04aa6d;
+  box-shadow: 1px 1px 1px black;
 }
 
 .start button:before {
-  content: '';
-  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
   position: absolute;
   top: -2px;
-  left:-2px;
+  left: -2px;
   background-size: 400%;
   z-index: -1;
   filter: blur(5px);
@@ -122,12 +137,12 @@ table th {
   height: calc(100% + 4px);
   animation: glowing 20s linear infinite;
   opacity: 0;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
   border-radius: 10px;
 }
 
 .start button:active {
-  color: rgb(247, 243, 243)
+  color: rgb(247, 243, 243);
 }
 
 .start button:active:after {
@@ -140,7 +155,7 @@ table th {
 
 .start button:after {
   z-index: -1;
-  content: '';
+  content: "";
   position: absolute;
   background: #111;
   left: 0;
@@ -149,14 +164,21 @@ table th {
 }
 
 @keyframes glowing {
-  0% { background-position: 0 0; }
-  50% { background-position: 400% 0; }
-  100% { background-position: 0 0; }
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
 }
 
-.table th, .home_table td {
+.table th,
+.home_table td {
   text-align: center;
-  font-family: 'M PLUS 1 Code', sans-serif;
+  font-family: "M PLUS 1 Code", sans-serif;
 }
 
 .table:hover {
@@ -167,7 +189,7 @@ table th {
   background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
 }
 
-.user_profile_start{
+.user_profile_start {
   background-color: #3c8ac9;
   border: 1px solid #3c8ac9;
   border-radius: 3px;
@@ -175,7 +197,7 @@ table th {
   box-shadow: 1px 1px black;
 }
 
-.user_profile_delete{
+.user_profile_delete {
   background-color: blueviolet;
   border: 1px solid blueviolet;
   border-radius: 3px;
@@ -183,7 +205,7 @@ table th {
   box-shadow: 1px 1px black;
 }
 
-.go_button{
+.go_button {
   border: 1px solid red;
   background-color: crimson;
   color: white;
@@ -200,7 +222,7 @@ table th {
   text-decoration: none;
 }
 
-.hyper{
+.hyper {
   text-decoration: none;
   color: white;
 }
@@ -214,12 +236,10 @@ table th {
   cursor: pointer;
 }
 
-
 .glitch,
 .glitch:after {
-
-  font-family: 'Bebas Neue', sans-serif;
-  background:#3c8ac9;
+  font-family: "Bebas Neue", sans-serif;
+  background: #3c8ac9;
   border: 1px solid #3c8ac9;
   border-radius: 3px;
   box-shadow: 1px 1px black;
@@ -241,7 +261,7 @@ table th {
   --slice-4: inset(40% -6px 43% 0);
   --slice-5: inset(80% -6px 5% 0);
 
-  content: 'ALTERNATE TEXT';
+  content: "ALTERNATE TEXT";
   display: block;
   position: absolute;
   top: 0;
@@ -304,6 +324,3 @@ table th {
     transform: translate(0);
   }
 }
-
-
-
