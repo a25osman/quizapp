@@ -3,7 +3,7 @@ QuizApp Project
 
 ## Description
 
-QuizApp is a multi-page quiz generator (multiple choice), built using Express, jQuery, HTML5 and CSS. Users can create as many quizzes as they like and publically list them on the homepage for any user to complete. Not too confident about sharing your quiz to everyone? Don't worry, just go to your user profile page and change the privacy settings. You can even set the privacy setting when you're creating your quiz! Users can share the results of their quiz to anyone, even non-registered guests.
+QuizApp is a multi-page multiple-choice quiz creation app, built using Express, jQuery, HTML5 and CSS. Users can create as many quizzes as they like and publicly list them on the homepage for any user to complete. Not too confident about sharing your quiz to everyone? Don't worry, just go to your user profile page, and change the privacy settings. You can even set the privacy setting when you're creating your quiz! Users can share the results of their quiz to anyone, even non-registered guests.
 
 
 ## Final Product
