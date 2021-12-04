@@ -8,11 +8,11 @@ QuizApp is a multi-page quiz generator (multiple choice), built using Express, j
 
 ## Final Product
 
-!["Screenshot of quizapp homepage"]()
+!["Screenshot of quizapp homepage"](https://github.com/isaiahmutekanga/quizapp/blob/master/docs/quizapp_homepage.png?raw=true)
 
-!["screenshot of user profile page"]()
+!["screenshot of user profile page"](https://github.com/isaiahmutekanga/quizapp/blob/master/docs/quizapp_profilepage.png?raw=true)
 
-!["screenshot of quiz results page"]()
+!["screenshot of quiz results page"](https://github.com/isaiahmutekanga/quizapp/blob/master/docs/quizapp_results.png?raw=true)
 
 
 ## Getting Started
